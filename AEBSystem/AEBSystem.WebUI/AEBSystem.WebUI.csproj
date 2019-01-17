@@ -191,6 +191,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TRTrackingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1642,6 +1643,7 @@
     <Content Include="Views\Shared\_RightSidebar.cshtml" />
     <Content Include="Views\Shared\_TopNavbar.cshtml" />
     <Content Include="Views\Shared\_TopNavbar2.cshtml" />
+    <Content Include="Views\TRTracking\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1661,6 +1663,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AEBSystem.Core\AEBSystem.Core.csproj">
+      <Project>{03c4ed61-a2c6-4419-a652-59f98169e926}</Project>
+      <Name>AEBSystem.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AEBSystem.DataAccess.InMemory\AEBSystem.DataAccess.InMemory.csproj">
+      <Project>{9422c187-49ff-4aa8-88b8-5e40e84f0115}</Project>
+      <Name>AEBSystem.DataAccess.InMemory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AEBSystem.DataAccess.SQL\AEBSystem.DataAccess.SQL.csproj">
+      <Project>{3a68d956-81f1-48d6-b387-46e45e275167}</Project>
+      <Name>AEBSystem.DataAccess.SQL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AEBSystem.Services\AEBSystem.Services.csproj">
+      <Project>{4565c543-76ac-4675-b364-f903ae9a552b}</Project>
+      <Name>AEBSystem.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

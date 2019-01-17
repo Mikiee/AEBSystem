@@ -30,8 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,7 +49,83 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\CAAPDATA_NLA.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CAAPDATA_NLA.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAAPDATA_NLA.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CAAPDATA_NLA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAAPDATA_NLA.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CAAPDATA_NLA.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblAirman.cs">
+      <DependentUpon>CAAPDATA_NLA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblAMType.cs">
+      <DependentUpon>CAAPDATA_NLA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblAnswerSheet1.cs">
+      <DependentUpon>CAAPDATA_NLA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblAnswerSheet2.cs">
+      <DependentUpon>CAAPDATA_NLA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblApplication.cs">
+      <DependentUpon>CAAPDATA_NLA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblLicType1.cs">
+      <DependentUpon>CAAPDATA_NLA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblLicType2.cs">
+      <DependentUpon>CAAPDATA_NLA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblNationality.cs">
+      <DependentUpon>CAAPDATA_NLA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblQuestionnaire.cs">
+      <DependentUpon>CAAPDATA_NLA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSchool.cs">
+      <DependentUpon>CAAPDATA_NLA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblUser.cs">
+      <DependentUpon>CAAPDATA_NLA.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\AirmenDropdownViewModel.cs" />
+    <Compile Include="ViewModels\AirmenViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="Models\CAAPDATA_NLA.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CAAPDATA_NLA.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\CAAPDATA_NLA.edmx.diagram">
+      <DependentUpon>CAAPDATA_NLA.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\CAAPDATA_NLA.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CAAPDATA_NLA.edmx</DependentUpon>
+      <LastGenOutput>CAAPDATA_NLA.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\CAAPDATA_NLA.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CAAPDATA_NLA.edmx</DependentUpon>
+      <LastGenOutput>CAAPDATA_NLA.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

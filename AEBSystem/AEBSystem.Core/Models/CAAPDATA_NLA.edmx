@@ -1,0 +1,613 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CAAPDATA_NLAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblAirmen">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="AirmenType_Id" Type="int" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="Contact_no" Type="nvarchar" MaxLength="20" />
+          <Property Name="Occupation" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sex" Type="nvarchar" MaxLength="10" />
+          <Property Name="Nationality_Id" Type="int" />
+          <Property Name="Height" Type="int" />
+          <Property Name="Weight" Type="int" />
+          <Property Name="Hair_Color" Type="nvarchar" MaxLength="10" />
+          <Property Name="Build" Type="nvarchar" MaxLength="50" />
+          <Property Name="Realtionship" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date_Naturalized" Type="datetime" />
+          <Property Name="Rel_Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="CivilStatus_Id" Type="int" />
+          <Property Name="Relative" Type="nvarchar" MaxLength="100" />
+          <Property Name="Date_Birth" Type="datetime" />
+          <Property Name="Complexion" Type="nvarchar" MaxLength="50" />
+          <Property Name="Citizenship_Id" Type="int" />
+          <Property Name="Employer" Type="nvarchar" MaxLength="100" />
+          <Property Name="Eye_Color" Type="nvarchar" MaxLength="10" />
+          <Property Name="Job_Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Rel_Contact" Type="nvarchar" MaxLength="20" />
+          <Property Name="PEL" Type="varchar" MaxLength="10" />
+          <Property Name="DegreeCourse" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblAMType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblAMType">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblAnswerSheet1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblAnswerSheet1">
+          <Key>
+            <PropertyRef Name="exam_id" />
+          </Key>
+          <Property Name="exam_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="exam_date" Type="datetime" />
+          <Property Name="am_type" Type="int" />
+          <Property Name="Applicant_id" Type="int" />
+          <Property Name="Subject_ID" Type="int" />
+          <Property Name="Correct_Ans" Type="int" />
+          <Property Name="No_Items" Type="int" />
+          <Property Name="Sched_time" Type="int" />
+          <Property Name="PassWD" Type="int" />
+          <Property Name="control_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="log_time" Type="datetime" />
+          <Property Name="TimeLeft" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblAnswerSheet2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblAnswerSheet2">
+          <Key>
+            <PropertyRef Name="Line_no" />
+          </Key>
+          <Property Name="exam_id" Type="int" />
+          <Property Name="Line_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Question_id" Type="int" />
+          <Property Name="E_answer" Type="nvarchar" MaxLength="1" />
+          <Property Name="C_Answer" Type="nvarchar" MaxLength="1" />
+          <Property Name="Skip_Level" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblApplication' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblApplication">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Application_Date" Type="datetime" />
+          <Property Name="Code" Type="int" Nullable="false" />
+          <Property Name="Airmen_Id" Type="int" />
+          <Property Name="ExamSched_Id" Type="int" />
+          <Property Name="Subject_id" Type="int" />
+          <Property Name="Exam_date" Type="datetime" />
+          <Property Name="Loc" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'CAAPDATA_NLA.dbo.tblcorLicenseType' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tblcorLicenseType">
+          <Property Name="Code" Type="int" />
+          <Property Name="License" Type="varchar" MaxLength="100" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'CAAPDATA_NLA.dbo.tblCORSubjects' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tblCORSubjects">
+          <Property Name="Code" Type="int" />
+          <Property Name="Subject" Type="varchar" MaxLength="55" />
+          <Property Name="LicType" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblLicType1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblLicType1">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="am_type" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblLicType2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblLicType2">
+          <Key>
+            <PropertyRef Name="Line_no" />
+          </Key>
+          <Property Name="Code" Type="int" />
+          <Property Name="Line_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="500" />
+          <Property Name="no_of_items" Type="int" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="500" />
+          <Property Name="exam_day" Type="nvarchar" MaxLength="50" />
+          <Property Name="exam_time" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblNationality' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblNationality">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="Code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblQuestionnaires' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblQuestionnaires">
+          <Key>
+            <PropertyRef Name="Question_Id" />
+          </Key>
+          <Property Name="Question_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Batch_no" Type="int" />
+          <Property Name="Subject_Id" Type="int" />
+          <Property Name="Question" Type="nvarchar" MaxLength="1000" />
+          <Property Name="A_answer" Type="nvarchar" MaxLength="500" />
+          <Property Name="B_answer" Type="nvarchar" MaxLength="500" />
+          <Property Name="C_answer" Type="nvarchar" MaxLength="500" />
+          <Property Name="D_answer" Type="nvarchar" MaxLength="500" />
+          <Property Name="Correct_answer" Type="nvarchar" MaxLength="1" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblSchools' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblSchools">
+          <Key>
+            <PropertyRef Name="recid" />
+          </Key>
+          <Property Name="Code" Type="varchar" MaxLength="10" />
+          <Property Name="Schools" Type="varchar" MaxLength="500" />
+          <Property Name="recid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblUsers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="20" />
+          <Property Name="Password" Type="varchar" MaxLength="20" />
+          <Property Name="Fullname" Type="varchar" MaxLength="55" />
+          <Property Name="Role" Type="varchar" MaxLength="20" />
+          <Property Name="Position" Type="varchar" MaxLength="55" />
+        </EntityType>
+        <EntityContainer Name="CAAPDATA_NLAModelStoreContainer">
+          <EntitySet Name="tblAirmen" EntityType="Self.tblAirmen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAMType" EntityType="Self.tblAMType" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblAMType].[code] AS [code], 
+    [tblAMType].[description] AS [description]
+    FROM [dbo].[tblAMType] AS [tblAMType]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tblAnswerSheet1" EntityType="Self.tblAnswerSheet1" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblAnswerSheet1].[exam_id] AS [exam_id], 
+    [tblAnswerSheet1].[exam_date] AS [exam_date], 
+    [tblAnswerSheet1].[am_type] AS [am_type], 
+    [tblAnswerSheet1].[Applicant_id] AS [Applicant_id], 
+    [tblAnswerSheet1].[Subject_ID] AS [Subject_ID], 
+    [tblAnswerSheet1].[Correct_Ans] AS [Correct_Ans], 
+    [tblAnswerSheet1].[No_Items] AS [No_Items], 
+    [tblAnswerSheet1].[Sched_time] AS [Sched_time], 
+    [tblAnswerSheet1].[PassWD] AS [PassWD], 
+    [tblAnswerSheet1].[control_no] AS [control_no], 
+    [tblAnswerSheet1].[log_time] AS [log_time], 
+    [tblAnswerSheet1].[TimeLeft] AS [TimeLeft]
+    FROM [dbo].[tblAnswerSheet1] AS [tblAnswerSheet1]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tblAnswerSheet2" EntityType="Self.tblAnswerSheet2" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblAnswerSheet2].[exam_id] AS [exam_id], 
+    [tblAnswerSheet2].[Line_no] AS [Line_no], 
+    [tblAnswerSheet2].[Question_id] AS [Question_id], 
+    [tblAnswerSheet2].[E_answer] AS [E_answer], 
+    [tblAnswerSheet2].[C_Answer] AS [C_Answer], 
+    [tblAnswerSheet2].[Skip_Level] AS [Skip_Level]
+    FROM [dbo].[tblAnswerSheet2] AS [tblAnswerSheet2]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tblApplication" EntityType="Self.tblApplication" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblApplication].[Application_Date] AS [Application_Date], 
+    [tblApplication].[Code] AS [Code], 
+    [tblApplication].[Airmen_Id] AS [Airmen_Id], 
+    [tblApplication].[ExamSched_Id] AS [ExamSched_Id], 
+    [tblApplication].[Subject_id] AS [Subject_id], 
+    [tblApplication].[Exam_date] AS [Exam_date], 
+    [tblApplication].[Loc] AS [Loc]
+    FROM [dbo].[tblApplication] AS [tblApplication]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tblLicType1" EntityType="Self.tblLicType1" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblLicType1].[Code] AS [Code], 
+    [tblLicType1].[Description] AS [Description], 
+    [tblLicType1].[am_type] AS [am_type]
+    FROM [dbo].[tblLicType1] AS [tblLicType1]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tblLicType2" EntityType="Self.tblLicType2" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblLicType2].[Code] AS [Code], 
+    [tblLicType2].[Line_no] AS [Line_no], 
+    [tblLicType2].[Subject] AS [Subject], 
+    [tblLicType2].[no_of_items] AS [no_of_items], 
+    [tblLicType2].[Remarks] AS [Remarks], 
+    [tblLicType2].[exam_day] AS [exam_day], 
+    [tblLicType2].[exam_time] AS [exam_time]
+    FROM [dbo].[tblLicType2] AS [tblLicType2]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tblNationality" EntityType="Self.tblNationality" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblNationality].[Description] AS [Description], 
+    [tblNationality].[Code] AS [Code]
+    FROM [dbo].[tblNationality] AS [tblNationality]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tblQuestionnaires" EntityType="Self.tblQuestionnaires" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblQuestionnaires].[Question_Id] AS [Question_Id], 
+    [tblQuestionnaires].[Batch_no] AS [Batch_no], 
+    [tblQuestionnaires].[Subject_Id] AS [Subject_Id], 
+    [tblQuestionnaires].[Question] AS [Question], 
+    [tblQuestionnaires].[A_answer] AS [A_answer], 
+    [tblQuestionnaires].[B_answer] AS [B_answer], 
+    [tblQuestionnaires].[C_answer] AS [C_answer], 
+    [tblQuestionnaires].[D_answer] AS [D_answer], 
+    [tblQuestionnaires].[Correct_answer] AS [Correct_answer]
+    FROM [dbo].[tblQuestionnaires] AS [tblQuestionnaires]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tblSchools" EntityType="Self.tblSchools" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblSchools].[Code] AS [Code], 
+    [tblSchools].[Schools] AS [Schools], 
+    [tblSchools].[recid] AS [recid]
+    FROM [dbo].[tblSchools] AS [tblSchools]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tblUsers" EntityType="Self.tblUsers" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblUsers].[ID] AS [ID], 
+    [tblUsers].[Username] AS [Username], 
+    [tblUsers].[Password] AS [Password], 
+    [tblUsers].[Fullname] AS [Fullname], 
+    [tblUsers].[Role] AS [Role], 
+    [tblUsers].[Position] AS [Position]
+    FROM [dbo].[tblUsers] AS [tblUsers]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CAAPDATA_NLAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblAirman">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AirmenType_Id" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Contact_no" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Occupation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Nationality_Id" Type="Int32" />
+          <Property Name="Height" Type="Int32" />
+          <Property Name="Weight" Type="Int32" />
+          <Property Name="Hair_Color" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Build" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Realtionship" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Naturalized" Type="DateTime" Precision="3" />
+          <Property Name="Rel_Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CivilStatus_Id" Type="Int32" />
+          <Property Name="Relative" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Birth" Type="DateTime" Precision="3" />
+          <Property Name="Complexion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Citizenship_Id" Type="Int32" />
+          <Property Name="Employer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Eye_Color" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Job_Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Rel_Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PEL" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DegreeCourse" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblAMType">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblAnswerSheet1">
+          <Key>
+            <PropertyRef Name="exam_id" />
+          </Key>
+          <Property Name="exam_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="exam_date" Type="DateTime" Precision="3" />
+          <Property Name="am_type" Type="Int32" />
+          <Property Name="Applicant_id" Type="Int32" />
+          <Property Name="Subject_ID" Type="Int32" />
+          <Property Name="Correct_Ans" Type="Int32" />
+          <Property Name="No_Items" Type="Int32" />
+          <Property Name="Sched_time" Type="Int32" />
+          <Property Name="PassWD" Type="Int32" />
+          <Property Name="control_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="log_time" Type="DateTime" Precision="3" />
+          <Property Name="TimeLeft" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblAnswerSheet2">
+          <Key>
+            <PropertyRef Name="Line_no" />
+          </Key>
+          <Property Name="exam_id" Type="Int32" />
+          <Property Name="Line_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Question_id" Type="Int32" />
+          <Property Name="E_answer" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="C_Answer" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="Skip_Level" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblApplication">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Application_Date" Type="DateTime" Precision="3" />
+          <Property Name="Code" Type="Int32" Nullable="false" />
+          <Property Name="Airmen_Id" Type="Int32" />
+          <Property Name="ExamSched_Id" Type="Int32" />
+          <Property Name="Subject_id" Type="Int32" />
+          <Property Name="Exam_date" Type="DateTime" Precision="3" />
+          <Property Name="Loc" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblLicType1">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="am_type" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblLicType2">
+          <Key>
+            <PropertyRef Name="Line_no" />
+          </Key>
+          <Property Name="Code" Type="Int32" />
+          <Property Name="Line_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subject" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="no_of_items" Type="Int32" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="exam_day" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="exam_time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblNationality">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="tblQuestionnaire">
+          <Key>
+            <PropertyRef Name="Question_Id" />
+          </Key>
+          <Property Name="Question_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Batch_no" Type="Int32" />
+          <Property Name="Subject_Id" Type="Int32" />
+          <Property Name="Question" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="A_answer" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="B_answer" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="C_answer" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="D_answer" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Correct_answer" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblSchool">
+          <Key>
+            <PropertyRef Name="recid" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Schools" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="recid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fullname" Type="String" MaxLength="55" FixedLength="false" Unicode="false" />
+          <Property Name="Role" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Position" Type="String" MaxLength="55" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="CAAPDATA_NLA_DbSet" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblAirmen" EntityType="Self.tblAirman" />
+          <EntitySet Name="tblAMTypes" EntityType="Self.tblAMType" />
+          <EntitySet Name="tblAnswerSheet1" EntityType="Self.tblAnswerSheet1" />
+          <EntitySet Name="tblAnswerSheet2" EntityType="Self.tblAnswerSheet2" />
+          <EntitySet Name="tblApplications" EntityType="Self.tblApplication" />
+          <EntitySet Name="tblLicType1" EntityType="Self.tblLicType1" />
+          <EntitySet Name="tblLicType2" EntityType="Self.tblLicType2" />
+          <EntitySet Name="tblNationalities" EntityType="Self.tblNationality" />
+          <EntitySet Name="tblQuestionnaires" EntityType="Self.tblQuestionnaire" />
+          <EntitySet Name="tblSchools" EntityType="Self.tblSchool" />
+          <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CAAPDATA_NLAModelStoreContainer" CdmEntityContainer="CAAPDATA_NLA_DbSet">
+          <EntitySetMapping Name="tblAirmen">
+            <EntityTypeMapping TypeName="CAAPDATA_NLAModel.tblAirman">
+              <MappingFragment StoreEntitySet="tblAirmen">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="AirmenType_Id" ColumnName="AirmenType_Id" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Contact_no" ColumnName="Contact_no" />
+                <ScalarProperty Name="Occupation" ColumnName="Occupation" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Nationality_Id" ColumnName="Nationality_Id" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Hair_Color" ColumnName="Hair_Color" />
+                <ScalarProperty Name="Build" ColumnName="Build" />
+                <ScalarProperty Name="Realtionship" ColumnName="Realtionship" />
+                <ScalarProperty Name="Date_Naturalized" ColumnName="Date_Naturalized" />
+                <ScalarProperty Name="Rel_Address" ColumnName="Rel_Address" />
+                <ScalarProperty Name="CivilStatus_Id" ColumnName="CivilStatus_Id" />
+                <ScalarProperty Name="Relative" ColumnName="Relative" />
+                <ScalarProperty Name="Date_Birth" ColumnName="Date_Birth" />
+                <ScalarProperty Name="Complexion" ColumnName="Complexion" />
+                <ScalarProperty Name="Citizenship_Id" ColumnName="Citizenship_Id" />
+                <ScalarProperty Name="Employer" ColumnName="Employer" />
+                <ScalarProperty Name="Eye_Color" ColumnName="Eye_Color" />
+                <ScalarProperty Name="Job_Title" ColumnName="Job_Title" />
+                <ScalarProperty Name="Rel_Contact" ColumnName="Rel_Contact" />
+                <ScalarProperty Name="PEL" ColumnName="PEL" />
+                <ScalarProperty Name="DegreeCourse" ColumnName="DegreeCourse" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAMTypes">
+            <EntityTypeMapping TypeName="CAAPDATA_NLAModel.tblAMType">
+              <MappingFragment StoreEntitySet="tblAMType">
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAnswerSheet1">
+            <EntityTypeMapping TypeName="CAAPDATA_NLAModel.tblAnswerSheet1">
+              <MappingFragment StoreEntitySet="tblAnswerSheet1">
+                <ScalarProperty Name="exam_id" ColumnName="exam_id" />
+                <ScalarProperty Name="exam_date" ColumnName="exam_date" />
+                <ScalarProperty Name="am_type" ColumnName="am_type" />
+                <ScalarProperty Name="Applicant_id" ColumnName="Applicant_id" />
+                <ScalarProperty Name="Subject_ID" ColumnName="Subject_ID" />
+                <ScalarProperty Name="Correct_Ans" ColumnName="Correct_Ans" />
+                <ScalarProperty Name="No_Items" ColumnName="No_Items" />
+                <ScalarProperty Name="Sched_time" ColumnName="Sched_time" />
+                <ScalarProperty Name="PassWD" ColumnName="PassWD" />
+                <ScalarProperty Name="control_no" ColumnName="control_no" />
+                <ScalarProperty Name="log_time" ColumnName="log_time" />
+                <ScalarProperty Name="TimeLeft" ColumnName="TimeLeft" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAnswerSheet2">
+            <EntityTypeMapping TypeName="CAAPDATA_NLAModel.tblAnswerSheet2">
+              <MappingFragment StoreEntitySet="tblAnswerSheet2">
+                <ScalarProperty Name="exam_id" ColumnName="exam_id" />
+                <ScalarProperty Name="Line_no" ColumnName="Line_no" />
+                <ScalarProperty Name="Question_id" ColumnName="Question_id" />
+                <ScalarProperty Name="E_answer" ColumnName="E_answer" />
+                <ScalarProperty Name="C_Answer" ColumnName="C_Answer" />
+                <ScalarProperty Name="Skip_Level" ColumnName="Skip_Level" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblApplications">
+            <EntityTypeMapping TypeName="CAAPDATA_NLAModel.tblApplication">
+              <MappingFragment StoreEntitySet="tblApplication">
+                <ScalarProperty Name="Application_Date" ColumnName="Application_Date" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Airmen_Id" ColumnName="Airmen_Id" />
+                <ScalarProperty Name="ExamSched_Id" ColumnName="ExamSched_Id" />
+                <ScalarProperty Name="Subject_id" ColumnName="Subject_id" />
+                <ScalarProperty Name="Exam_date" ColumnName="Exam_date" />
+                <ScalarProperty Name="Loc" ColumnName="Loc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLicType1">
+            <EntityTypeMapping TypeName="CAAPDATA_NLAModel.tblLicType1">
+              <MappingFragment StoreEntitySet="tblLicType1">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="am_type" ColumnName="am_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLicType2">
+            <EntityTypeMapping TypeName="CAAPDATA_NLAModel.tblLicType2">
+              <MappingFragment StoreEntitySet="tblLicType2">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Line_no" ColumnName="Line_no" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="no_of_items" ColumnName="no_of_items" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="exam_day" ColumnName="exam_day" />
+                <ScalarProperty Name="exam_time" ColumnName="exam_time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblNationalities">
+            <EntityTypeMapping TypeName="CAAPDATA_NLAModel.tblNationality">
+              <MappingFragment StoreEntitySet="tblNationality">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblQuestionnaires">
+            <EntityTypeMapping TypeName="CAAPDATA_NLAModel.tblQuestionnaire">
+              <MappingFragment StoreEntitySet="tblQuestionnaires">
+                <ScalarProperty Name="Question_Id" ColumnName="Question_Id" />
+                <ScalarProperty Name="Batch_no" ColumnName="Batch_no" />
+                <ScalarProperty Name="Subject_Id" ColumnName="Subject_Id" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="A_answer" ColumnName="A_answer" />
+                <ScalarProperty Name="B_answer" ColumnName="B_answer" />
+                <ScalarProperty Name="C_answer" ColumnName="C_answer" />
+                <ScalarProperty Name="D_answer" ColumnName="D_answer" />
+                <ScalarProperty Name="Correct_answer" ColumnName="Correct_answer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSchools">
+            <EntityTypeMapping TypeName="CAAPDATA_NLAModel.tblSchool">
+              <MappingFragment StoreEntitySet="tblSchools">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Schools" ColumnName="Schools" />
+                <ScalarProperty Name="recid" ColumnName="recid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsers">
+            <EntityTypeMapping TypeName="CAAPDATA_NLAModel.tblUser">
+              <MappingFragment StoreEntitySet="tblUsers">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

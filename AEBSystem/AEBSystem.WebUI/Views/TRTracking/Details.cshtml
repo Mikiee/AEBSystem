@@ -1,0 +1,79 @@
+﻿@model AEBSystem.Core.ViewModels.HistoryViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Exam History</h2>
+<div class="col-md-2">
+    <h3>Subject</h3>
+    <div class="list-group">
+       @foreach (var subj in Model.History)
+       {
+        <strong class="label label-default">@subj.Subject</strong>
+       }
+    </div>
+</div>
+
+
+
+<table class="table table-striped">
+   
+
+
+    @foreach (var item in Model.History)
+    {
+
+        {
+            var cssClass = "";
+            if (item.PassFail == "Failed")
+            {
+                cssClass = "label label-danger";
+            }
+            else if (item.PassFail == "Passed")
+            {
+                cssClass = "label label-success";
+            }
+            else
+            {
+                cssClass = "label label-warning";
+            }
+
+            <tr>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subject)
+                </td>
+
+                <td>
+                 <span class="@cssClass">@Html.DisplayFor(modelItem => item.PassFail)</span>   
+                </td>
+                <td>
+                    <span class="@cssClass">@Html.DisplayFor(modelItem => item.Rating)</span>   
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.exam_date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Applicant_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Correct_Ans)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.No_Items)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Loc)
+                </td>
+            </tr>
+
+        }
+
+
+    }
+
+
+</table>
+

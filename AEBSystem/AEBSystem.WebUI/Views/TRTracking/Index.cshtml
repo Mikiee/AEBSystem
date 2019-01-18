@@ -1,17 +1,16 @@
-﻿@model IEnumerable<AEBSystem.Core.ViewModels.AirmenViewModel>
-
+﻿@model IEnumerable<AEBSystem.Core.Models.getAirmenAll>
 
 <div class="row wrapper border-bottom white-bg page-heading">
-   
-        @{
-            ViewBag.Title = "Airmen Informations";
-        }
-    
+
+    @{
+        ViewBag.Title = "Airmen Informations";
+    }
+
     <h2><strong>Airmen Informations</strong></h2>
-   
+
 
     <ol class="breadcrumb">
-       
+
         <li>
             <a>TR Traking</a>
         </li>
@@ -20,14 +19,16 @@
         </li>
     </ol>
 
-    
+
 </div>
- 
-    <div class="wrapper wrapper-content animated fadeInRight">
-       
+
+<div class="wrapper wrapper-content animated fadeInRight">
+
+   
+    <div class="ibox-content">
         @using (Html.BeginForm("Index", "TRTracking", FormMethod.Get))
         {
-          
+
             <div class="row">
                 <div class="col-sm-6">
                     <h2>
@@ -37,73 +38,70 @@
                 <div class="col-sm-6">
 
                     <div class="input-group">
-                        @*<input type="text" placeholder="Search" class="input-sm form-control"/>*@ 
+                        @*<input type="text" placeholder="Search" class="input-sm form-control"/>*@
                         @Html.TextBox("search", null, new { @class = "input-sm form-control" })<span class="input-group-btn">
-                            <input type="submit" name="submit" value="Search" class="btn btn-sm btn-primary"/>
+                            <input type="submit" name="submit" value="Search" class="btn btn-sm btn-primary" />
                         </span>
                     </div>
                 </div>
             </div>
-
-        <div class="ibox-content">
-           
-            <br />
-            <table class="table  table-striped">
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PEL)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Fullname)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.LicenseTypeId)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.LicenseType)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Address)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Contact)
-                    </th>
-                   
-                    <th></th>
-                </tr>
-
-                @foreach (var item in Model)
-            {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PEL)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Fullname)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LicenseTypeId)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LicenseType)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Address)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Contact)
-                        </td>
-                        
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Code }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.Code }) |
-
-                        </td>
-                    </tr>
-                }
-
-            </table>
-        </div>
         }
+        <table class="table  table-striped">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PEL)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fullname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AirmenType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Airmen_Desc)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PEL)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fullname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AirmenType)
+                    </td>
+                    <td>
+                        @{
+                            var cssClass = "";
+                            if (item.Airmen_Desc.Contains("AMT") || item.Airmen_Desc.Contains("AMS"))
+                            {
+                                cssClass = "label label-danger";
+                            }
+                            else if (item.Airmen_Desc.Contains("Pilot") || item.Airmen_Desc == "Additional Rating")
+                            {
+                                cssClass = "label label-primary";
+                            }
+                            else
+                            {
+                                cssClass = "label label-warning";
+                            }
+                            <strong><span class="@cssClass">@Html.DisplayFor(modelItem => item.Airmen_Desc)</span></strong>
+                        }
+                      
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.recid }) |
+                        @Html.ActionLink("Details", "Details", new { PEL = item.PEL, amType = item.AirmenType }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.recid })
+                    </td>
+                </tr>
+            }
+
+        </table>
     </div>
-       
+</div>

@@ -1654,6 +1654,7 @@
     <Content Include="Views\Shared\_TopNavbar2.cshtml" />
     <Content Include="Views\TRTracking\Index.cshtml" />
     <Content Include="Views\TRTracking\Details.cshtml" />
+    <None Include="Views\TRTracking\AddApp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1698,7 +1699,7 @@
   <ItemGroup>
     <EmbeddedResource Include="CrystalReports\ExamHistory.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ExamHistory.cs</LastGenOutput>
+      <LastGenOutput>ExamHistory1.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

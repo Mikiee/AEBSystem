@@ -37,6 +37,7 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblAirmen' does not have a primary ke
           <Property Name="Rel_Contact" Type="nvarchar" MaxLength="20" />
           <Property Name="PEL" Type="varchar" MaxLength="10" />
           <Property Name="DegreeCourse" Type="varchar" MaxLength="20" />
+          <Property Name="Loc" Type="varchar" MaxLength="5" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'CAAPDATA.dbo.tblAMType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -200,7 +201,8 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
     [tblAirmen].[Job_Title] AS [Job_Title], 
     [tblAirmen].[Rel_Contact] AS [Rel_Contact], 
     [tblAirmen].[PEL] AS [PEL], 
-    [tblAirmen].[DegreeCourse] AS [DegreeCourse]
+    [tblAirmen].[DegreeCourse] AS [DegreeCourse], 
+    [tblAirmen].[Loc] AS [Loc]
     FROM [dbo].[tblAirmen] AS [tblAirmen]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="tblAMType" EntityType="Self.tblAMType" store:Type="Tables" store:Schema="dbo">
@@ -335,6 +337,7 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
           <Property Name="Rel_Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="PEL" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="DegreeCourse" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Loc" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tblAMType">
           <Key>
@@ -469,6 +472,7 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
           <Property Type="String" Name="Fullname" Nullable="true" MaxLength="255" />
           <Property Type="Int32" Name="AirmenType" Nullable="true" />
           <Property Type="String" Name="Airmen_Desc" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="Loc" Nullable="true" MaxLength="10" />
         </ComplexType>
         <ComplexType Name="ExamHistoryResult">
           <Property Type="String" Name="airmen_name" Nullable="true" MaxLength="255" />
@@ -493,6 +497,7 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
           <EntitySetMapping Name="tblAirmen">
             <EntityTypeMapping TypeName="CAAPDATA_MNL.tblAirman">
               <MappingFragment StoreEntitySet="tblAirmen">
+                <ScalarProperty Name="Loc" ColumnName="Loc" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="AirmenType_Id" ColumnName="AirmenType_Id" />
@@ -647,6 +652,7 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
                 <ScalarProperty Name="Fullname" ColumnName="Fullname" />
                 <ScalarProperty Name="AirmenType" ColumnName="AirmenType" />
                 <ScalarProperty Name="Airmen_Desc" ColumnName="Airmen Desc" />
+                <ScalarProperty Name="Loc" ColumnName="Loc" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

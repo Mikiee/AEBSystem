@@ -5,11 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AEBSystem.Core.Models;
-using AEBSystem.Core.ViewModels;
-using AEBSystem.Core.CrystalReports;
-using AEBSystem.DataAccess.InMemory;
 using CrystalDecisions.CrystalReports.Engine;
-using static AEBSystem.Core.Models.LinqGrouping;
+
 
 namespace AEBSystem.WebUI.Controllers
 {
@@ -31,15 +28,7 @@ namespace AEBSystem.WebUI.Controllers
         }    
        
         public ActionResult ExamHistory(string PEL, int amType)
-        {
-            //List<ExamHistoryResult> history = db_mnl.ExamHistory(PEL, amType).ToList();
-            //List<tblLicType2> subject = db_mnl.tblLicType2.ToList();
-
-            //HistoryViewModel viewModel = new HistoryViewModel();
-            //viewModel.History = history;
-            //viewModel.Subject = subject;
-            //return View(viewModel);
-
+        {  
             List<ExamHistoryResult> history = new List<ExamHistoryResult>();
             history = db_mnl.ExamHistory(PEL, amType).ToList();
 
@@ -54,6 +43,37 @@ namespace AEBSystem.WebUI.Controllers
             Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
             stream.Seek(0, SeekOrigin.Begin);
             return File(stream, "application/pdf", PEL + "_" + amType +"_History.pdf");
+        }
+
+        public ActionResult AddApp(int Id, string Loc)
+        {           
+            if (Loc == "MNL")
+            {
+                tblAirman am = db_mnl.tblAirmen.Find(Id);
+                if (am != null)
+                {
+                    return View(am);
+                }
+                {
+                    return HttpNotFound();
+                }
+            }
+            else if(Loc == "NLA")
+            {
+                tblAirman am = db_nla.tblAirmen.Find(Id);
+                if (am != null)
+                {
+                    return View(am);
+                }
+                {
+                    return HttpNotFound();
+                }
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+            
         }
 
 

@@ -89,14 +89,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CAAPDATA_NLA.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\dbList.cs" />
     <Compile Include="Models\ExamHistoryResult.cs">
       <DependentUpon>CAAPDATA_MNL.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\getAirmenAll.cs">
       <DependentUpon>CAAPDATA_MNL.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\LinqGrouping.cs" />
     <Compile Include="Models\tblAirman.cs">
       <DependentUpon>CAAPDATA_MNL.tt</DependentUpon>
     </Compile>

@@ -18,5 +18,6 @@ namespace AEBSystem.Core.Models
         public string Fullname { get; set; }
         public Nullable<int> AirmenType { get; set; }
         public string Airmen_Desc { get; set; }
+        public string Loc { get; set; }
     }
 }

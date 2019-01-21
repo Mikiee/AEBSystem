@@ -48,6 +48,7 @@
         }
         <table class="table  table-striped">
             <tr>
+                <th></th>
                 <th>
                     @Html.DisplayNameFor(model => model.PEL)
                 </th>
@@ -60,12 +61,20 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Airmen_Desc)
                 </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Loc)
+                </th>
                 <th></th>
             </tr>
 
             @foreach (var item in Model)
             {
+
                 <tr>
+                    <td>
+                        @Html.ActionLink("History", "ExamHistory", new { PEL = item.PEL, amType = item.AirmenType }) |
+                        @Html.ActionLink("Add Application", "AddApp", new { Id = item.recid, Loc = item.Loc.Trim() })
+                    </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.PEL)
                     </td>
@@ -76,29 +85,33 @@
                         @Html.DisplayFor(modelItem => item.AirmenType)
                     </td>
                     <td>
-                        @{
-                            var cssClass = "";
-                            if (item.Airmen_Desc.Contains("AMT") || item.Airmen_Desc.Contains("AMS"))
-                            {
-                                cssClass = "label label-danger";
-                            }
-                            else if (item.Airmen_Desc.Contains("Pilot") || item.Airmen_Desc == "Additional Rating")
-                            {
-                                cssClass = "label label-primary";
-                            }
-                            else
-                            {
-                                cssClass = "label label-warning";
-                            }
-                            <strong><span class="@cssClass">@Html.DisplayFor(modelItem => item.Airmen_Desc)</span></strong>
+                        @Html.DisplayFor(modelItem => item.Airmen_Desc)
+                    </td>
+                    <td>@{
+                        var cssClass = "";
+                        if (item.Loc.Contains("MNL"))
+                        {
+                            cssClass = "label label-success";
                         }
-                      
+                        else if (item.Loc.Contains("NLA"))
+                        {
+                            cssClass = "label label-primary";
+                        }
+                        else if (item.Loc.Contains("VA"))
+                        {
+                            cssClass = "label label-warning";
+                        }
+                        else
+                        {
+                            cssClass = "label label-danger";
+                        }
+                        <span class="@cssClass">@Html.DisplayFor(modelItem => item.Loc)</span>
+                    }
+
+
+                       
                     </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.recid }) |
-                        @Html.ActionLink("History", "ExamHistory", new { PEL = item.PEL, amType = item.AirmenType }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.recid })
-                    </td>
+                   
                 </tr>
             }
 

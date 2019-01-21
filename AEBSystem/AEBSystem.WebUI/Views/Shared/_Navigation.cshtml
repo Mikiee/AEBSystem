@@ -60,6 +60,9 @@
             <li class="@Html.IsSelected(controller: "Users")">
                 <a href="@Url.Action("Index", "Widgets")"><i class="fa fa-user-circle"></i> <span class="nav-label" data-i18n="nav.widgets">System Users</span> </a>
             </li>
+            <li class="@Html.IsSelected(controller: "Tracking")">
+                <a href="@Url.Action("Index", "TRTracking")"><i class="fa fa-user-circle"></i> <span class="nav-label" data-i18n="nav.widgets">Test Report Tracking</span> </a>
+            </li>
             @*<li class="@Html.IsSelected(controller: "Forms")">
                 <a href="#"><i class="fa fa-edit"></i> <span class="nav-label" data-i18n="nav.forms">Forms</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse @Html.IsSelected(controller: "Forms", cssClass: "in")">

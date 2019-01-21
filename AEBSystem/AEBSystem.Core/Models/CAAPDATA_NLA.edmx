@@ -4,7 +4,9 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CAAPDATA_NLAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="CAAPDATA_NLA.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblAirmen' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblAirmen">
           <Key>
             <PropertyRef Name="Code" />
@@ -129,41 +131,6 @@ warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblLicType2' does not have a prim
           <Property Name="exam_time" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblNationality' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="tblNationality">
-          <Key>
-            <PropertyRef Name="Code" />
-          </Key>
-          <Property Name="Description" Type="nvarchar" MaxLength="100" />
-          <Property Name="Code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblQuestionnaires' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="tblQuestionnaires">
-          <Key>
-            <PropertyRef Name="Question_Id" />
-          </Key>
-          <Property Name="Question_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Batch_no" Type="int" />
-          <Property Name="Subject_Id" Type="int" />
-          <Property Name="Question" Type="nvarchar" MaxLength="1000" />
-          <Property Name="A_answer" Type="nvarchar" MaxLength="500" />
-          <Property Name="B_answer" Type="nvarchar" MaxLength="500" />
-          <Property Name="C_answer" Type="nvarchar" MaxLength="500" />
-          <Property Name="D_answer" Type="nvarchar" MaxLength="500" />
-          <Property Name="Correct_answer" Type="nvarchar" MaxLength="1" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblSchools' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="tblSchools">
-          <Key>
-            <PropertyRef Name="recid" />
-          </Key>
-          <Property Name="Code" Type="varchar" MaxLength="10" />
-          <Property Name="Schools" Type="varchar" MaxLength="500" />
-          <Property Name="recid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblUsers">
           <Key>
@@ -176,8 +143,37 @@ warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblUsers' does not have a primary
           <Property Name="Role" Type="varchar" MaxLength="20" />
           <Property Name="Position" Type="varchar" MaxLength="55" />
         </EntityType>
-        <EntityContainer Name="CAAPDATA_NLAModelStoreContainer">
-          <EntitySet Name="tblAirmen" EntityType="Self.tblAirmen" Schema="dbo" store:Type="Tables" />
+        <EntityContainer Name="CAAPDATA_NLAStoreContainer">
+          <EntitySet Name="tblAirmen" EntityType="Self.tblAirmen" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblAirmen].[Code] AS [Code], 
+    [tblAirmen].[Description] AS [Description], 
+    [tblAirmen].[AirmenType_Id] AS [AirmenType_Id], 
+    [tblAirmen].[Address] AS [Address], 
+    [tblAirmen].[Contact_no] AS [Contact_no], 
+    [tblAirmen].[Occupation] AS [Occupation], 
+    [tblAirmen].[Sex] AS [Sex], 
+    [tblAirmen].[Nationality_Id] AS [Nationality_Id], 
+    [tblAirmen].[Height] AS [Height], 
+    [tblAirmen].[Weight] AS [Weight], 
+    [tblAirmen].[Hair_Color] AS [Hair_Color], 
+    [tblAirmen].[Build] AS [Build], 
+    [tblAirmen].[Realtionship] AS [Realtionship], 
+    [tblAirmen].[Date_Naturalized] AS [Date_Naturalized], 
+    [tblAirmen].[Rel_Address] AS [Rel_Address], 
+    [tblAirmen].[CivilStatus_Id] AS [CivilStatus_Id], 
+    [tblAirmen].[Relative] AS [Relative], 
+    [tblAirmen].[Date_Birth] AS [Date_Birth], 
+    [tblAirmen].[Complexion] AS [Complexion], 
+    [tblAirmen].[Citizenship_Id] AS [Citizenship_Id], 
+    [tblAirmen].[Employer] AS [Employer], 
+    [tblAirmen].[Eye_Color] AS [Eye_Color], 
+    [tblAirmen].[Job_Title] AS [Job_Title], 
+    [tblAirmen].[Rel_Contact] AS [Rel_Contact], 
+    [tblAirmen].[PEL] AS [PEL], 
+    [tblAirmen].[DegreeCourse] AS [DegreeCourse]
+    FROM [dbo].[tblAirmen] AS [tblAirmen]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="tblAMType" EntityType="Self.tblAMType" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [tblAMType].[code] AS [code], 
@@ -239,32 +235,6 @@ warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblUsers' does not have a primary
     [tblLicType2].[exam_time] AS [exam_time]
     FROM [dbo].[tblLicType2] AS [tblLicType2]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="tblNationality" EntityType="Self.tblNationality" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tblNationality].[Description] AS [Description], 
-    [tblNationality].[Code] AS [Code]
-    FROM [dbo].[tblNationality] AS [tblNationality]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="tblQuestionnaires" EntityType="Self.tblQuestionnaires" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tblQuestionnaires].[Question_Id] AS [Question_Id], 
-    [tblQuestionnaires].[Batch_no] AS [Batch_no], 
-    [tblQuestionnaires].[Subject_Id] AS [Subject_Id], 
-    [tblQuestionnaires].[Question] AS [Question], 
-    [tblQuestionnaires].[A_answer] AS [A_answer], 
-    [tblQuestionnaires].[B_answer] AS [B_answer], 
-    [tblQuestionnaires].[C_answer] AS [C_answer], 
-    [tblQuestionnaires].[D_answer] AS [D_answer], 
-    [tblQuestionnaires].[Correct_answer] AS [Correct_answer]
-    FROM [dbo].[tblQuestionnaires] AS [tblQuestionnaires]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="tblSchools" EntityType="Self.tblSchools" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tblSchools].[Code] AS [Code], 
-    [tblSchools].[Schools] AS [Schools], 
-    [tblSchools].[recid] AS [recid]
-    FROM [dbo].[tblSchools] AS [tblSchools]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="tblUsers" EntityType="Self.tblUsers" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [tblUsers].[ID] AS [ID], 
@@ -280,7 +250,7 @@ warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblUsers' does not have a primary
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="CAAPDATA_NLAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="CAAPDATA_NLA" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="tblAirman">
           <Key>
             <PropertyRef Name="Code" />
@@ -379,35 +349,6 @@ warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblUsers' does not have a primary
           <Property Name="exam_day" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="exam_time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="tblNationality">
-          <Key>
-            <PropertyRef Name="Code" />
-          </Key>
-          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
-        <EntityType Name="tblQuestionnaire">
-          <Key>
-            <PropertyRef Name="Question_Id" />
-          </Key>
-          <Property Name="Question_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Batch_no" Type="Int32" />
-          <Property Name="Subject_Id" Type="Int32" />
-          <Property Name="Question" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="A_answer" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="B_answer" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="C_answer" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="D_answer" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Correct_answer" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="tblSchool">
-          <Key>
-            <PropertyRef Name="recid" />
-          </Key>
-          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Schools" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="recid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
         <EntityType Name="tblUser">
           <Key>
             <PropertyRef Name="ID" />
@@ -427,9 +368,6 @@ warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblUsers' does not have a primary
           <EntitySet Name="tblApplications" EntityType="Self.tblApplication" />
           <EntitySet Name="tblLicType1" EntityType="Self.tblLicType1" />
           <EntitySet Name="tblLicType2" EntityType="Self.tblLicType2" />
-          <EntitySet Name="tblNationalities" EntityType="Self.tblNationality" />
-          <EntitySet Name="tblQuestionnaires" EntityType="Self.tblQuestionnaire" />
-          <EntitySet Name="tblSchools" EntityType="Self.tblSchool" />
           <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
         </EntityContainer>
       </Schema>
@@ -437,9 +375,9 @@ warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblUsers' does not have a primary
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CAAPDATA_NLAModelStoreContainer" CdmEntityContainer="CAAPDATA_NLA_DbSet">
+        <EntityContainerMapping StorageEntityContainer="CAAPDATA_NLAStoreContainer" CdmEntityContainer="CAAPDATA_NLA_DbSet">
           <EntitySetMapping Name="tblAirmen">
-            <EntityTypeMapping TypeName="CAAPDATA_NLAModel.tblAirman">
+            <EntityTypeMapping TypeName="CAAPDATA_NLA.tblAirman">
               <MappingFragment StoreEntitySet="tblAirmen">
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
@@ -471,7 +409,7 @@ warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblUsers' does not have a primary
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblAMTypes">
-            <EntityTypeMapping TypeName="CAAPDATA_NLAModel.tblAMType">
+            <EntityTypeMapping TypeName="CAAPDATA_NLA.tblAMType">
               <MappingFragment StoreEntitySet="tblAMType">
                 <ScalarProperty Name="code" ColumnName="code" />
                 <ScalarProperty Name="description" ColumnName="description" />
@@ -479,7 +417,7 @@ warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblUsers' does not have a primary
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblAnswerSheet1">
-            <EntityTypeMapping TypeName="CAAPDATA_NLAModel.tblAnswerSheet1">
+            <EntityTypeMapping TypeName="CAAPDATA_NLA.tblAnswerSheet1">
               <MappingFragment StoreEntitySet="tblAnswerSheet1">
                 <ScalarProperty Name="exam_id" ColumnName="exam_id" />
                 <ScalarProperty Name="exam_date" ColumnName="exam_date" />
@@ -497,7 +435,7 @@ warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblUsers' does not have a primary
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblAnswerSheet2">
-            <EntityTypeMapping TypeName="CAAPDATA_NLAModel.tblAnswerSheet2">
+            <EntityTypeMapping TypeName="CAAPDATA_NLA.tblAnswerSheet2">
               <MappingFragment StoreEntitySet="tblAnswerSheet2">
                 <ScalarProperty Name="exam_id" ColumnName="exam_id" />
                 <ScalarProperty Name="Line_no" ColumnName="Line_no" />
@@ -509,7 +447,7 @@ warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblUsers' does not have a primary
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblApplications">
-            <EntityTypeMapping TypeName="CAAPDATA_NLAModel.tblApplication">
+            <EntityTypeMapping TypeName="CAAPDATA_NLA.tblApplication">
               <MappingFragment StoreEntitySet="tblApplication">
                 <ScalarProperty Name="Application_Date" ColumnName="Application_Date" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
@@ -522,7 +460,7 @@ warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblUsers' does not have a primary
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblLicType1">
-            <EntityTypeMapping TypeName="CAAPDATA_NLAModel.tblLicType1">
+            <EntityTypeMapping TypeName="CAAPDATA_NLA.tblLicType1">
               <MappingFragment StoreEntitySet="tblLicType1">
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
@@ -531,7 +469,7 @@ warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblUsers' does not have a primary
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblLicType2">
-            <EntityTypeMapping TypeName="CAAPDATA_NLAModel.tblLicType2">
+            <EntityTypeMapping TypeName="CAAPDATA_NLA.tblLicType2">
               <MappingFragment StoreEntitySet="tblLicType2">
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Line_no" ColumnName="Line_no" />
@@ -543,40 +481,8 @@ warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblUsers' does not have a primary
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblNationalities">
-            <EntityTypeMapping TypeName="CAAPDATA_NLAModel.tblNationality">
-              <MappingFragment StoreEntitySet="tblNationality">
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblQuestionnaires">
-            <EntityTypeMapping TypeName="CAAPDATA_NLAModel.tblQuestionnaire">
-              <MappingFragment StoreEntitySet="tblQuestionnaires">
-                <ScalarProperty Name="Question_Id" ColumnName="Question_Id" />
-                <ScalarProperty Name="Batch_no" ColumnName="Batch_no" />
-                <ScalarProperty Name="Subject_Id" ColumnName="Subject_Id" />
-                <ScalarProperty Name="Question" ColumnName="Question" />
-                <ScalarProperty Name="A_answer" ColumnName="A_answer" />
-                <ScalarProperty Name="B_answer" ColumnName="B_answer" />
-                <ScalarProperty Name="C_answer" ColumnName="C_answer" />
-                <ScalarProperty Name="D_answer" ColumnName="D_answer" />
-                <ScalarProperty Name="Correct_answer" ColumnName="Correct_answer" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblSchools">
-            <EntityTypeMapping TypeName="CAAPDATA_NLAModel.tblSchool">
-              <MappingFragment StoreEntitySet="tblSchools">
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="Schools" ColumnName="Schools" />
-                <ScalarProperty Name="recid" ColumnName="recid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tblUsers">
-            <EntityTypeMapping TypeName="CAAPDATA_NLAModel.tblUser">
+            <EntityTypeMapping TypeName="CAAPDATA_NLA.tblUser">
               <MappingFragment StoreEntitySet="tblUsers">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Username" ColumnName="Username" />

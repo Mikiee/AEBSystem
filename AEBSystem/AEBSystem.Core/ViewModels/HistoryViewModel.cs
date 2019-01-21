@@ -9,7 +9,7 @@ namespace AEBSystem.Core.ViewModels
 {
     public class HistoryViewModel
     {
-        public IEnumerable<ExamHistoryResults> History {get; set;}
+        public IEnumerable<ExamHistoryResult> History {get; set;}
         public IEnumerable<tblLicType2> Subject { get; set; }
     }
 }

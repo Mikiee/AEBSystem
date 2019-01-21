@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -39,6 +42,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -49,6 +53,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CrystalReports\ExamHistory.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExamHistory.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Models\CAAPDATA_MNL.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -80,10 +90,7 @@
       <DependentUpon>CAAPDATA_NLA.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\dbList.cs" />
-    <Compile Include="Models\ExamHistoryResults.cs">
-      <DependentUpon>CAAPDATA_MNL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\getAirmen2_Result.cs">
+    <Compile Include="Models\ExamHistoryResult.cs">
       <DependentUpon>CAAPDATA_MNL.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\getAirmenAll.cs">
@@ -130,10 +137,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <EntityDeploy Include="Models\CAAPDATA_NLA.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CAAPDATA_NLA.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <EntityDeploy Include="Models\CAAPDATA_MNL.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CAAPDATA_MNL.Designer.cs</LastGenOutput>
@@ -141,6 +144,10 @@
     <None Include="Models\CAAPDATA_MNL.edmx.diagram">
       <DependentUpon>CAAPDATA_MNL.edmx</DependentUpon>
     </None>
+    <EntityDeploy Include="Models\CAAPDATA_NLA.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CAAPDATA_NLA.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <None Include="Models\CAAPDATA_NLA.edmx.diagram">
       <DependentUpon>CAAPDATA_NLA.edmx</DependentUpon>
     </None>
@@ -148,6 +155,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Models\CAAPDATA_MNL.Context.tt">
@@ -170,6 +178,12 @@
       <DependentUpon>CAAPDATA_NLA.edmx</DependentUpon>
       <LastGenOutput>CAAPDATA_NLA.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CrystalReports\ExamHistory.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ExamHistory.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -19,7 +19,7 @@
 
 <table class="table table-striped">
    
-
+    @Html.ActionLink("Back to List", "Index")
 
     @foreach (var item in Model.History)
     {
@@ -40,16 +40,16 @@
             }
 
             <tr>
-                
+
                 <td>
-                    @Html.DisplayFor(modelItem => item.Subject)
+                    <span class="@cssClass"> @Html.DisplayFor(modelItem => item.Subject)</span>
                 </td>
 
                 <td>
-                 <span class="@cssClass">@Html.DisplayFor(modelItem => item.PassFail)</span>   
+                    <span class="@cssClass">@Html.DisplayFor(modelItem => item.PassFail)</span>
                 </td>
                 <td>
-                    <span class="@cssClass">@Html.DisplayFor(modelItem => item.Rating)</span>   
+                    <span class="@cssClass">@Html.DisplayFor(modelItem => item.Rating)</span>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.exam_date)

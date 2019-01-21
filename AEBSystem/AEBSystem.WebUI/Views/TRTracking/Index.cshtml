@@ -96,7 +96,7 @@
                     </td>
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id = item.recid }) |
-                        @Html.ActionLink("Details", "Details", new { PEL = item.PEL, amType = item.AirmenType }) |
+                        @Html.ActionLink("History", "ExamHistory", new { PEL = item.PEL, amType = item.AirmenType }) |
                         @Html.ActionLink("Delete", "Delete", new { id = item.recid })
                     </td>
                 </tr>

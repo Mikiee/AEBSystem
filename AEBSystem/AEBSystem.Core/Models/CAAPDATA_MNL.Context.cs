@@ -15,10 +15,10 @@ namespace AEBSystem.Core.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class CAAPDATA_MNL_DbSet1 : DbContext
+    public partial class CAAPDATA_MNL_DbSet : DbContext
     {
-        public CAAPDATA_MNL_DbSet1()
-            : base("name=CAAPDATA_MNL_DbSet1")
+        public CAAPDATA_MNL_DbSet()
+            : base("name=CAAPDATA_MNL_DbSet")
         {
         }
     
@@ -34,10 +34,10 @@ namespace AEBSystem.Core.Models
         public virtual DbSet<tblApplication> tblApplications { get; set; }
         public virtual DbSet<tblLicType1> tblLicType1 { get; set; }
         public virtual DbSet<tblLicType2> tblLicType2 { get; set; }
+        public virtual DbSet<tblNationality> tblNationalities { get; set; }
         public virtual DbSet<tblQuestionnaire> tblQuestionnaires { get; set; }
         public virtual DbSet<tblSchool> tblSchools { get; set; }
         public virtual DbSet<tblUser> tblUsers { get; set; }
-        public virtual DbSet<tblNationality> tblNationalities { get; set; }
     
         public virtual ObjectResult<getAirmenAll> getAirmen_all(string search)
         {
@@ -48,16 +48,7 @@ namespace AEBSystem.Core.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getAirmenAll>("getAirmen_all", searchParameter);
         }
     
-        public virtual ObjectResult<getAirmen2_Result> getAirmen2(string search)
-        {
-            var searchParameter = search != null ?
-                new ObjectParameter("Search", search) :
-                new ObjectParameter("Search", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getAirmen2_Result>("getAirmen2", searchParameter);
-        }
-    
-        public virtual ObjectResult<ExamHistoryResults> ExamHistory(string pEL, Nullable<int> aM_Type)
+        public virtual ObjectResult<ExamHistoryResult> ExamHistory(string pEL, Nullable<int> aM_Type)
         {
             var pELParameter = pEL != null ?
                 new ObjectParameter("PEL", pEL) :
@@ -67,7 +58,7 @@ namespace AEBSystem.Core.Models
                 new ObjectParameter("AM_Type", aM_Type) :
                 new ObjectParameter("AM_Type", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ExamHistoryResults>("ExamHistory", pELParameter, aM_TypeParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ExamHistoryResult>("ExamHistory", pELParameter, aM_TypeParameter);
         }
     }
 }

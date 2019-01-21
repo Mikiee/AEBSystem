@@ -11,12 +11,19 @@ namespace AEBSystem.Core.Models
 {
     using System;
     
-    public partial class getAirmen2_Result
+    public partial class ExamHistoryResult
     {
-        public int recid { get; set; }
+        public string airmen_name { get; set; }
+        public string Subject { get; set; }
+        public string PassFail { get; set; }
+        public double Rating { get; set; }
+        public string exam_date { get; set; }
+        public int Applicant_id { get; set; }
+        public int Correct_Ans { get; set; }
+        public int No_Items { get; set; }
+        public string Loc { get; set; }
+        public int Subject_ID { get; set; }
+        public string License { get; set; }
         public string PEL { get; set; }
-        public string Fullname { get; set; }
-        public Nullable<int> AirmenType { get; set; }
-        public string Airmen_Desc { get; set; }
     }
 }

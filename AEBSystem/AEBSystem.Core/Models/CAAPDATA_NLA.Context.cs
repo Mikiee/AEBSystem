@@ -32,9 +32,6 @@ namespace AEBSystem.Core.Models
         public virtual DbSet<tblApplication> tblApplications { get; set; }
         public virtual DbSet<tblLicType1> tblLicType1 { get; set; }
         public virtual DbSet<tblLicType2> tblLicType2 { get; set; }
-        public virtual DbSet<tblNationality> tblNationalities { get; set; }
-        public virtual DbSet<tblQuestionnaire> tblQuestionnaires { get; set; }
-        public virtual DbSet<tblSchool> tblSchools { get; set; }
         public virtual DbSet<tblUser> tblUsers { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace AEBSystem.Services
 
     public class SearchAirmen
     {
-        CAAPDATA_MNL_DbSet1 db_mnl = new CAAPDATA_MNL_DbSet1();
+        CAAPDATA_MNL_DbSet db_mnl = new CAAPDATA_MNL_DbSet();
         CAAPDATA_NLA_DbSet db_nla = new CAAPDATA_NLA_DbSet();
         
         public void Search(string search, string dbLists)

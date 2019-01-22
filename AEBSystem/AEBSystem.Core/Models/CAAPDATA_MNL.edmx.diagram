@@ -12,10 +12,11 @@
         <EntityTypeShape EntityType="CAAPDATA_MNL.tblApplication" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CAAPDATA_MNL.tblLicType1" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CAAPDATA_MNL.tblLicType2" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CAAPDATA_MNL.tblNationality" Width="1.5" PointX="4.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CAAPDATA_MNL.tblQuestionnaire" Width="1.5" PointX="6.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAAPDATA_MNL.tblNationality" Width="1.5" PointX="9.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAAPDATA_MNL.tblQuestionnaire" Width="1.5" PointX="10" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="CAAPDATA_MNL.tblSchool" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CAAPDATA_MNL.tblUser" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAAPDATA_MNL.tblUser" Width="1.5" PointX="12.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAAPDATA_MNL.tblTestReportApplication" Width="1.5" PointX="5.375" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

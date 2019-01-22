@@ -4,9 +4,9 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="CAAPDATA_MNL.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="CAAPDATA_MAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
-warning 6002: The table/view 'CAAPDATA.dbo.tblAirmen' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'CAAPDATA_MA.dbo.tblAirmen' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblAirmen">
           <Key>
             <PropertyRef Name="Code" />
@@ -40,7 +40,7 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblAirmen' does not have a primary ke
           <Property Name="Loc" Type="varchar" MaxLength="5" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'CAAPDATA.dbo.tblAMType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'CAAPDATA_MA.dbo.tblAMType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblAMType">
           <Key>
             <PropertyRef Name="code" />
@@ -49,7 +49,7 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblAMType' does not have a primary ke
           <Property Name="description" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'CAAPDATA.dbo.tblAnswerSheet1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'CAAPDATA_MA.dbo.tblAnswerSheet1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblAnswerSheet1">
           <Key>
             <PropertyRef Name="exam_id" />
@@ -68,7 +68,7 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblAnswerSheet1' does not have a prim
           <Property Name="TimeLeft" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'CAAPDATA.dbo.tblAnswerSheet2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'CAAPDATA_MA.dbo.tblAnswerSheet2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblAnswerSheet2">
           <Key>
             <PropertyRef Name="Line_no" />
@@ -81,7 +81,7 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblAnswerSheet2' does not have a prim
           <Property Name="Skip_Level" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'CAAPDATA.dbo.tblApplication' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'CAAPDATA_MA.dbo.tblApplication' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblApplication">
           <Key>
             <PropertyRef Name="Code" />
@@ -95,7 +95,20 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblApplication' does not have a prima
           <Property Name="Loc" Type="varchar" MaxLength="5" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'CAAPDATA.dbo.tblLicType1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6013: The table/view 'CAAPDATA_MA.dbo.tblcorLicenseType' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tblcorLicenseType">
+          <Property Name="Code" Type="int" />
+          <Property Name="License" Type="varchar" MaxLength="100" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'CAAPDATA_MA.dbo.tblCORSubjects' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tblCORSubjects">
+          <Property Name="Code" Type="int" />
+          <Property Name="Subject" Type="varchar" MaxLength="55" />
+          <Property Name="LicType" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CAAPDATA_MA.dbo.tblLicType1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblLicType1">
           <Key>
             <PropertyRef Name="Code" />
@@ -105,7 +118,7 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblLicType1' does not have a primary 
           <Property Name="am_type" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'CAAPDATA.dbo.tblLicType2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'CAAPDATA_MA.dbo.tblLicType2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblLicType2">
           <Key>
             <PropertyRef Name="Line_no" />
@@ -119,7 +132,7 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblLicType2' does not have a primary 
           <Property Name="exam_time" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'CAAPDATA.dbo.tblNationality' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'CAAPDATA_MA.dbo.tblNationality' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblNationality">
           <Key>
             <PropertyRef Name="Code" />
@@ -128,7 +141,7 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblNationality' does not have a prima
           <Property Name="Code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'CAAPDATA.dbo.tblQuestionnaires' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'CAAPDATA_MA.dbo.tblQuestionnaires' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblQuestionnaires">
           <Key>
             <PropertyRef Name="Question_Id" />
@@ -144,7 +157,7 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblQuestionnaires' does not have a pr
           <Property Name="Correct_answer" Type="nvarchar" MaxLength="1" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'CAAPDATA.dbo.tblSchools' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'CAAPDATA_MA.dbo.tblSchools' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblSchools">
           <Key>
             <PropertyRef Name="recid" />
@@ -153,26 +166,8 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblSchools' does not have a primary k
           <Property Name="Schools" Type="varchar" MaxLength="500" />
           <Property Name="recid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
-        <EntityType Name="tblTestReportApplications">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PEL" Type="varchar" MaxLength="6" />
-          <Property Name="amType" Type="int" />
-          <Property Name="Status" Type="varchar" MaxLength="50" />
-          <Property Name="Initial" Type="varchar" MaxLength="20" />
-          <Property Name="iDate" Type="datetime" />
-          <Property Name="ControlledBy" Type="varchar" MaxLength="20" />
-          <Property Name="ControlNo" Type="varchar" MaxLength="10" />
-          <Property Name="cDate" Type="datetime" />
-          <Property Name="ReleasedBy" Type="varchar" MaxLength="20" />
-          <Property Name="rDate" Type="datetime" />
-          <Property Name="Remarks" Type="varchar" MaxLength="255" />
-          <Property Name="LastModifiedBy" Type="varchar" MaxLength="20" />
-        </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'CAAPDATA_MA.dbo.tblUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblUsers">
           <Key>
             <PropertyRef Name="ID" />
@@ -184,22 +179,7 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
           <Property Name="Role" Type="varchar" MaxLength="20" />
           <Property Name="Position" Type="varchar" MaxLength="55" />
         </EntityType>
-        <Function Name="ExamHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="PEL" Type="varchar" Mode="In" />
-          <Parameter Name="AM_Type" Type="int" Mode="In" />
-        </Function>
-        <Function Name="getAirmen_all" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Search" Type="varchar" Mode="In" />
-        </Function>
-        <Function Name="trInitial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="PEL" Type="varchar" Mode="In" />
-          <Parameter Name="amType" Type="int" Mode="In" />
-          <Parameter Name="Initial" Type="varchar" Mode="In" />
-          <Parameter Name="iDate" Type="datetime" Mode="In" />
-          <Parameter Name="Remarks" Type="varchar" Mode="In" />
-        </Function>
-        <EntityContainer Name="CAAPDATA_MNLStoreContainer">
-          <EntitySet Name="tblTestReportApplications" EntityType="Self.tblTestReportApplications" Schema="dbo" store:Type="Tables" />
+        <EntityContainer Name="CAAPDATA_MAModelStoreContainer">
           <EntitySet Name="tblAirmen" EntityType="Self.tblAirmen" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [tblAirmen].[Code] AS [Code], 
@@ -329,10 +309,11 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
     FROM [dbo].[tblUsers] AS [tblUsers]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="CAAPDATA_MNL" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="CAAPDATA_MAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="tblAirman">
           <Key>
             <PropertyRef Name="Code" />
@@ -472,7 +453,7 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
           <Property Name="Role" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Position" Type="String" MaxLength="55" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="CAAPDATA_MNL_DbSet" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="CAAPDATA_MA_DbSet" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tblAirmen" EntityType="Self.tblAirman" />
           <EntitySet Name="tblAMTypes" EntityType="Self.tblAMType" />
           <EntitySet Name="tblAnswerSheet1" EntityType="Self.tblAnswerSheet1" />
@@ -484,72 +465,16 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
           <EntitySet Name="tblQuestionnaires" EntityType="Self.tblQuestionnaire" />
           <EntitySet Name="tblSchools" EntityType="Self.tblSchool" />
           <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
-          <FunctionImport Name="getAirmen_all" ReturnType="Collection(CAAPDATA_MNL.getAirmenAll)">
-          <Parameter Name="Search" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="ExamHistory" ReturnType="Collection(CAAPDATA_MNL.ExamHistoryResult)">
-            <Parameter Name="PEL" Mode="In" Type="String" />
-            <Parameter Name="AM_Type" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <EntitySet Name="tblTestReportApplications" EntityType="CAAPDATA_MNL.tblTestReportApplication" />
-          <FunctionImport Name="trInitial">
-            <Parameter Name="PEL" Mode="In" Type="String" />
-            <Parameter Name="amType" Mode="In" Type="Int32" />
-            <Parameter Name="Initial" Mode="In" Type="String" />
-            <Parameter Name="iDate" Mode="In" Type="DateTime" />
-            <Parameter Name="Remarks" Mode="In" Type="String" />
-          </FunctionImport>
         </EntityContainer>
-        <ComplexType Name="getAirmenAll">
-          <Property Type="Int32" Name="recid" Nullable="true" />
-          <Property Type="String" Name="PEL" Nullable="true" MaxLength="10" />
-          <Property Type="String" Name="Fullname" Nullable="true" MaxLength="255" />
-          <Property Type="Int32" Name="AirmenType" Nullable="true" />
-          <Property Type="String" Name="Airmen_Desc" Nullable="true" MaxLength="40" />
-          <Property Type="String" Name="Loc" Nullable="true" MaxLength="10" />
-        </ComplexType>
-        <ComplexType Name="ExamHistoryResult">
-          <Property Type="String" Name="airmen_name" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="Subject" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="PassFail" Nullable="true" MaxLength="55" />
-          <Property Type="Double" Name="Rating" Nullable="true" />
-          <Property Type="String" Name="exam_date" Nullable="true" MaxLength="30" />
-          <Property Type="Int32" Name="Applicant_id" Nullable="true" />
-          <Property Type="Int32" Name="Correct_Ans" Nullable="true" />
-          <Property Type="Int32" Name="No_Items" Nullable="true" />
-          <Property Type="String" Name="Loc" Nullable="true" MaxLength="55" />
-          <Property Type="Int32" Name="Subject_ID" Nullable="true" />
-          <Property Type="String" Name="License" Nullable="true" MaxLength="55" />
-          <Property Type="String" Name="PEL" Nullable="true" MaxLength="10" />
-        </ComplexType>
-        <EntityType Name="tblTestReportApplication">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PEL" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
-          <Property Name="amType" Type="Int32" />
-          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Initial" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="iDate" Type="DateTime" Precision="3" />
-          <Property Name="ControlledBy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="ControlNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="cDate" Type="DateTime" Precision="3" />
-          <Property Name="ReleasedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="rDate" Type="DateTime" Precision="3" />
-          <Property Name="Remarks" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="LastModifiedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CAAPDATA_MNLStoreContainer" CdmEntityContainer="CAAPDATA_MNL_DbSet">
+        <EntityContainerMapping StorageEntityContainer="CAAPDATA_MAModelStoreContainer" CdmEntityContainer="CAAPDATA_MA_DbSet">
           <EntitySetMapping Name="tblAirmen">
-            <EntityTypeMapping TypeName="CAAPDATA_MNL.tblAirman">
+            <EntityTypeMapping TypeName="CAAPDATA_MAModel.tblAirman">
               <MappingFragment StoreEntitySet="tblAirmen">
-                <ScalarProperty Name="Loc" ColumnName="Loc" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="AirmenType_Id" ColumnName="AirmenType_Id" />
@@ -576,11 +501,12 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
                 <ScalarProperty Name="Rel_Contact" ColumnName="Rel_Contact" />
                 <ScalarProperty Name="PEL" ColumnName="PEL" />
                 <ScalarProperty Name="DegreeCourse" ColumnName="DegreeCourse" />
+                <ScalarProperty Name="Loc" ColumnName="Loc" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblAMTypes">
-            <EntityTypeMapping TypeName="CAAPDATA_MNL.tblAMType">
+            <EntityTypeMapping TypeName="CAAPDATA_MAModel.tblAMType">
               <MappingFragment StoreEntitySet="tblAMType">
                 <ScalarProperty Name="code" ColumnName="code" />
                 <ScalarProperty Name="description" ColumnName="description" />
@@ -588,7 +514,7 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblAnswerSheet1">
-            <EntityTypeMapping TypeName="CAAPDATA_MNL.tblAnswerSheet1">
+            <EntityTypeMapping TypeName="CAAPDATA_MAModel.tblAnswerSheet1">
               <MappingFragment StoreEntitySet="tblAnswerSheet1">
                 <ScalarProperty Name="exam_id" ColumnName="exam_id" />
                 <ScalarProperty Name="exam_date" ColumnName="exam_date" />
@@ -606,7 +532,7 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblAnswerSheet2">
-            <EntityTypeMapping TypeName="CAAPDATA_MNL.tblAnswerSheet2">
+            <EntityTypeMapping TypeName="CAAPDATA_MAModel.tblAnswerSheet2">
               <MappingFragment StoreEntitySet="tblAnswerSheet2">
                 <ScalarProperty Name="exam_id" ColumnName="exam_id" />
                 <ScalarProperty Name="Line_no" ColumnName="Line_no" />
@@ -618,7 +544,7 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblApplications">
-            <EntityTypeMapping TypeName="CAAPDATA_MNL.tblApplication">
+            <EntityTypeMapping TypeName="CAAPDATA_MAModel.tblApplication">
               <MappingFragment StoreEntitySet="tblApplication">
                 <ScalarProperty Name="Application_Date" ColumnName="Application_Date" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
@@ -631,7 +557,7 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblLicType1">
-            <EntityTypeMapping TypeName="CAAPDATA_MNL.tblLicType1">
+            <EntityTypeMapping TypeName="CAAPDATA_MAModel.tblLicType1">
               <MappingFragment StoreEntitySet="tblLicType1">
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
@@ -640,7 +566,7 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblLicType2">
-            <EntityTypeMapping TypeName="CAAPDATA_MNL.tblLicType2">
+            <EntityTypeMapping TypeName="CAAPDATA_MAModel.tblLicType2">
               <MappingFragment StoreEntitySet="tblLicType2">
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Line_no" ColumnName="Line_no" />
@@ -653,7 +579,7 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblNationalities">
-            <EntityTypeMapping TypeName="CAAPDATA_MNL.tblNationality">
+            <EntityTypeMapping TypeName="CAAPDATA_MAModel.tblNationality">
               <MappingFragment StoreEntitySet="tblNationality">
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
@@ -661,7 +587,7 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblQuestionnaires">
-            <EntityTypeMapping TypeName="CAAPDATA_MNL.tblQuestionnaire">
+            <EntityTypeMapping TypeName="CAAPDATA_MAModel.tblQuestionnaire">
               <MappingFragment StoreEntitySet="tblQuestionnaires">
                 <ScalarProperty Name="Question_Id" ColumnName="Question_Id" />
                 <ScalarProperty Name="Batch_no" ColumnName="Batch_no" />
@@ -676,7 +602,7 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblSchools">
-            <EntityTypeMapping TypeName="CAAPDATA_MNL.tblSchool">
+            <EntityTypeMapping TypeName="CAAPDATA_MAModel.tblSchool">
               <MappingFragment StoreEntitySet="tblSchools">
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Schools" ColumnName="Schools" />
@@ -685,7 +611,7 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblUsers">
-            <EntityTypeMapping TypeName="CAAPDATA_MNL.tblUser">
+            <EntityTypeMapping TypeName="CAAPDATA_MAModel.tblUser">
               <MappingFragment StoreEntitySet="tblUsers">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
@@ -696,56 +622,6 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="getAirmen_all" FunctionName="CAAPDATA_MNL.Store.getAirmen_all" >
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="CAAPDATA_MNL.getAirmenAll">
-                <ScalarProperty Name="recid" ColumnName="recid" />
-                <ScalarProperty Name="PEL" ColumnName="PEL" />
-                <ScalarProperty Name="Fullname" ColumnName="Fullname" />
-                <ScalarProperty Name="AirmenType" ColumnName="AirmenType" />
-                <ScalarProperty Name="Airmen_Desc" ColumnName="Airmen Desc" />
-                <ScalarProperty Name="Loc" ColumnName="Loc" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="ExamHistory" FunctionName="CAAPDATA_MNL.Store.ExamHistory">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="CAAPDATA_MNL.ExamHistoryResult">
-                <ScalarProperty Name="airmen_name" ColumnName="airmen_name" />
-                <ScalarProperty Name="Subject" ColumnName="Subject" />
-                <ScalarProperty Name="PassFail" ColumnName="PassFail" />
-                <ScalarProperty Name="Rating" ColumnName="Rating" />
-                <ScalarProperty Name="exam_date" ColumnName="exam_date" />
-                <ScalarProperty Name="Applicant_id" ColumnName="Applicant_id" />
-                <ScalarProperty Name="Correct_Ans" ColumnName="Correct_Ans" />
-                <ScalarProperty Name="No_Items" ColumnName="No_Items" />
-                <ScalarProperty Name="Loc" ColumnName="Loc" />
-                <ScalarProperty Name="Subject_ID" ColumnName="Subject_ID" />
-                <ScalarProperty Name="License" ColumnName="License" />
-                <ScalarProperty Name="PEL" ColumnName="PEL" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <EntitySetMapping Name="tblTestReportApplications">
-            <EntityTypeMapping TypeName="CAAPDATA_MNL.tblTestReportApplication">
-              <MappingFragment StoreEntitySet="tblTestReportApplications">
-                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
-                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-                <ScalarProperty Name="rDate" ColumnName="rDate" />
-                <ScalarProperty Name="ReleasedBy" ColumnName="ReleasedBy" />
-                <ScalarProperty Name="cDate" ColumnName="cDate" />
-                <ScalarProperty Name="ControlNo" ColumnName="ControlNo" />
-                <ScalarProperty Name="ControlledBy" ColumnName="ControlledBy" />
-                <ScalarProperty Name="iDate" ColumnName="iDate" />
-                <ScalarProperty Name="Initial" ColumnName="Initial" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="amType" ColumnName="amType" />
-                <ScalarProperty Name="PEL" ColumnName="PEL" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="trInitial" FunctionName="CAAPDATA_MNL.Store.trInitial" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

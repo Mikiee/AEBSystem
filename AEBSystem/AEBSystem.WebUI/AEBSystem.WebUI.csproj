@@ -1655,6 +1655,7 @@
     <Content Include="Views\TRTracking\Index.cshtml" />
     <Content Include="Views\TRTracking\Details.cshtml" />
     <None Include="Views\TRTracking\AddApp.cshtml" />
+    <Content Include="Views\TRTracking\ViewApplications.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

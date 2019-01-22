@@ -59,6 +59,21 @@
       <DependentUpon>ExamHistory.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Models\CAAPDATA_MA.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CAAPDATA_MA.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAAPDATA_MA.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CAAPDATA_MA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAAPDATA_MA.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CAAPDATA_MA.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\CAAPDATA_MNL.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -125,6 +140,9 @@
     <Compile Include="Models\tblSchool.cs">
       <DependentUpon>CAAPDATA_MNL.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tblTestReportApplication.cs">
+      <DependentUpon>CAAPDATA_MNL.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tblUser.cs">
       <DependentUpon>CAAPDATA_MNL.tt</DependentUpon>
     </Compile>
@@ -132,6 +150,8 @@
     <Compile Include="ViewModels\AirmenDropdownViewModel.cs" />
     <Compile Include="ViewModels\AirmenViewModel.cs" />
     <Compile Include="ViewModels\HistoryViewModel.cs" />
+    <Compile Include="ViewModels\TestReportStatusViewModel.cs" />
+    <Compile Include="ViewModels\TestReportViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
@@ -139,6 +159,13 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CAAPDATA_MNL.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <EntityDeploy Include="Models\CAAPDATA_MA.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CAAPDATA_MA.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\CAAPDATA_MA.edmx.diagram">
+      <DependentUpon>CAAPDATA_MA.edmx</DependentUpon>
+    </None>
     <None Include="Models\CAAPDATA_MNL.edmx.diagram">
       <DependentUpon>CAAPDATA_MNL.edmx</DependentUpon>
     </None>
@@ -156,6 +183,16 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Models\CAAPDATA_MA.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CAAPDATA_MA.edmx</DependentUpon>
+      <LastGenOutput>CAAPDATA_MA.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\CAAPDATA_MA.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CAAPDATA_MA.edmx</DependentUpon>
+      <LastGenOutput>CAAPDATA_MA.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\CAAPDATA_MNL.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CAAPDATA_MNL.edmx</DependentUpon>

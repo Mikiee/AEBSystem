@@ -12,7 +12,8 @@
         <EntityTypeShape EntityType="CAAPDATA_NLA.tblApplication" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CAAPDATA_NLA.tblLicType1" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CAAPDATA_NLA.tblLicType2" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CAAPDATA_NLA.tblUser" Width="1.5" PointX="4.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAAPDATA_NLA.tblUser" Width="1.5" PointX="9.875" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CAAPDATA_NLA.tblSchool" Width="1.5" PointX="12.125" PointY="4.125" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

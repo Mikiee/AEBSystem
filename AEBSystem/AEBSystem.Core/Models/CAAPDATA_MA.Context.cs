@@ -13,10 +13,10 @@ namespace AEBSystem.Core.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class CAAPDATA_NLA_DbSet : DbContext
+    public partial class CAAPDATA_MA_DbSet : DbContext
     {
-        public CAAPDATA_NLA_DbSet()
-            : base("name=CAAPDATA_NLA_DbSet")
+        public CAAPDATA_MA_DbSet()
+            : base("name=CAAPDATA_MA_DbSet")
         {
         }
     
@@ -32,7 +32,9 @@ namespace AEBSystem.Core.Models
         public virtual DbSet<tblApplication> tblApplications { get; set; }
         public virtual DbSet<tblLicType1> tblLicType1 { get; set; }
         public virtual DbSet<tblLicType2> tblLicType2 { get; set; }
-        public virtual DbSet<tblUser> tblUsers { get; set; }
+        public virtual DbSet<tblNationality> tblNationalities { get; set; }
+        public virtual DbSet<tblQuestionnaire> tblQuestionnaires { get; set; }
         public virtual DbSet<tblSchool> tblSchools { get; set; }
+        public virtual DbSet<tblUser> tblUsers { get; set; }
     }
 }

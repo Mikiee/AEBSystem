@@ -38,6 +38,7 @@ namespace AEBSystem.Core.Models
         public virtual DbSet<tblQuestionnaire> tblQuestionnaires { get; set; }
         public virtual DbSet<tblSchool> tblSchools { get; set; }
         public virtual DbSet<tblUser> tblUsers { get; set; }
+        public virtual DbSet<tblTestReportApplication> tblTestReportApplications { get; set; }
     
         public virtual ObjectResult<getAirmenAll> getAirmen_all(string search)
         {
@@ -59,6 +60,31 @@ namespace AEBSystem.Core.Models
                 new ObjectParameter("AM_Type", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ExamHistoryResult>("ExamHistory", pELParameter, aM_TypeParameter);
+        }
+    
+        public virtual int trInitial(string pEL, Nullable<int> amType, string initial, Nullable<System.DateTime> iDate, string remarks)
+        {
+            var pELParameter = pEL != null ?
+                new ObjectParameter("PEL", pEL) :
+                new ObjectParameter("PEL", typeof(string));
+    
+            var amTypeParameter = amType.HasValue ?
+                new ObjectParameter("amType", amType) :
+                new ObjectParameter("amType", typeof(int));
+    
+            var initialParameter = initial != null ?
+                new ObjectParameter("Initial", initial) :
+                new ObjectParameter("Initial", typeof(string));
+    
+            var iDateParameter = iDate.HasValue ?
+                new ObjectParameter("iDate", iDate) :
+                new ObjectParameter("iDate", typeof(System.DateTime));
+    
+            var remarksParameter = remarks != null ?
+                new ObjectParameter("Remarks", remarks) :
+                new ObjectParameter("Remarks", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("trInitial", pELParameter, amTypeParameter, initialParameter, iDateParameter, remarksParameter);
         }
     }
 }

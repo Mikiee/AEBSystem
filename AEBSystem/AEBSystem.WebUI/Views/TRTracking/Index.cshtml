@@ -32,7 +32,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <h2>
-                        @Html.ActionLink("Create New", "Create")
+                        @Html.ActionLink("View Reports", "ViewApplications")
                     </h2>
                 </div>
                 <div class="col-sm-6">
@@ -48,7 +48,7 @@
         }
         <table class="table  table-striped">
             <tr>
-                <th></th>
+                <th>Actions</th>
                 <th>
                     @Html.DisplayNameFor(model => model.PEL)
                 </th>
@@ -72,8 +72,8 @@
 
                 <tr>
                     <td>
-                        @Html.ActionLink("History", "ExamHistory", new { PEL = item.PEL, amType = item.AirmenType }) |
-                        @Html.ActionLink("Add Application", "AddApp", new { Id = item.recid, Loc = item.Loc.Trim() })
+                        @Html.ActionLink("History", "ExamHistory", new { PEL = item.PEL, amType = item.AirmenType }, new { @class = "btn btn-sm btn-primary", @role = "button" }) |
+                        @Html.ActionLink("Details", "AddApp", new { Id = item.recid, Loc = item.Loc.Trim() }, new { @class = "btn btn-sm btn-success", @role = "button" })
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.PEL)

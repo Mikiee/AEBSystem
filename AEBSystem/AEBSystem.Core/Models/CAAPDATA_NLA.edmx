@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CAAPDATA_NLA.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CAAPDATA_NLA.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
 warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblAirmen' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblAirmen">
@@ -37,6 +37,7 @@ warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblAirmen' does not have a primar
           <Property Name="Rel_Contact" Type="nvarchar" MaxLength="20" />
           <Property Name="PEL" Type="varchar" MaxLength="10" />
           <Property Name="DegreeCourse" Type="varchar" MaxLength="20" />
+          <Property Name="Loc" Type="varchar" MaxLength="5" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblAMType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -94,19 +95,6 @@ warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblApplication' does not have a p
           <Property Name="Loc" Type="varchar" MaxLength="5" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'CAAPDATA_NLA.dbo.tblcorLicenseType' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tblcorLicenseType">
-          <Property Name="Code" Type="int" />
-          <Property Name="License" Type="varchar" MaxLength="100" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'CAAPDATA_NLA.dbo.tblCORSubjects' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tblCORSubjects">
-          <Property Name="Code" Type="int" />
-          <Property Name="Subject" Type="varchar" MaxLength="55" />
-          <Property Name="LicType" Type="int" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblLicType1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblLicType1">
           <Key>
@@ -129,6 +117,16 @@ warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblLicType2' does not have a prim
           <Property Name="Remarks" Type="nvarchar" MaxLength="500" />
           <Property Name="exam_day" Type="nvarchar" MaxLength="50" />
           <Property Name="exam_time" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblSchools' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblSchools">
+          <Key>
+            <PropertyRef Name="recid" />
+          </Key>
+          <Property Name="Code" Type="varchar" MaxLength="10" />
+          <Property Name="Schools" Type="varchar" MaxLength="500" />
+          <Property Name="recid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -171,7 +169,8 @@ warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblUsers' does not have a primary
     [tblAirmen].[Job_Title] AS [Job_Title], 
     [tblAirmen].[Rel_Contact] AS [Rel_Contact], 
     [tblAirmen].[PEL] AS [PEL], 
-    [tblAirmen].[DegreeCourse] AS [DegreeCourse]
+    [tblAirmen].[DegreeCourse] AS [DegreeCourse], 
+    [tblAirmen].[Loc] AS [Loc]
     FROM [dbo].[tblAirmen] AS [tblAirmen]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="tblAMType" EntityType="Self.tblAMType" store:Type="Tables" store:Schema="dbo">
@@ -235,6 +234,13 @@ warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblUsers' does not have a primary
     [tblLicType2].[exam_time] AS [exam_time]
     FROM [dbo].[tblLicType2] AS [tblLicType2]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="tblSchools" EntityType="Self.tblSchools" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblSchools].[Code] AS [Code], 
+    [tblSchools].[Schools] AS [Schools], 
+    [tblSchools].[recid] AS [recid]
+    FROM [dbo].[tblSchools] AS [tblSchools]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="tblUsers" EntityType="Self.tblUsers" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [tblUsers].[ID] AS [ID], 
@@ -246,8 +252,7 @@ warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblUsers' does not have a primary
     FROM [dbo].[tblUsers] AS [tblUsers]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CAAPDATA_NLA" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -281,6 +286,7 @@ warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblUsers' does not have a primary
           <Property Name="Rel_Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="PEL" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="DegreeCourse" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Loc" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tblAMType">
           <Key>
@@ -369,7 +375,16 @@ warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblUsers' does not have a primary
           <EntitySet Name="tblLicType1" EntityType="Self.tblLicType1" />
           <EntitySet Name="tblLicType2" EntityType="Self.tblLicType2" />
           <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
+          <EntitySet Name="tblSchools" EntityType="CAAPDATA_NLA.tblSchool" />
         </EntityContainer>
+        <EntityType Name="tblSchool">
+          <Key>
+            <PropertyRef Name="recid" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Schools" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="recid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -379,6 +394,7 @@ warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblUsers' does not have a primary
           <EntitySetMapping Name="tblAirmen">
             <EntityTypeMapping TypeName="CAAPDATA_NLA.tblAirman">
               <MappingFragment StoreEntitySet="tblAirmen">
+                <ScalarProperty Name="Loc" ColumnName="Loc" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="AirmenType_Id" ColumnName="AirmenType_Id" />
@@ -490,6 +506,15 @@ warning 6002: The table/view 'CAAPDATA_NLA.dbo.tblUsers' does not have a primary
                 <ScalarProperty Name="Fullname" ColumnName="Fullname" />
                 <ScalarProperty Name="Role" ColumnName="Role" />
                 <ScalarProperty Name="Position" ColumnName="Position" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSchools">
+            <EntityTypeMapping TypeName="CAAPDATA_NLA.tblSchool">
+              <MappingFragment StoreEntitySet="tblSchools">
+                <ScalarProperty Name="recid" ColumnName="recid" />
+                <ScalarProperty Name="Schools" ColumnName="Schools" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -11,26 +11,16 @@ namespace AEBSystem.Core.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class tblAirman
     {
-        [Key]
         public int Code { get; set; }
-        [DisplayName("Fullname")]
-        [Required]
         public string Description { get; set; }
-        [DisplayName("License Type")]
-        [Required]
         public Nullable<int> AirmenType_Id { get; set; }
-        [DisplayName("Company/School")] 
         public string Address { get; set; }
-        [DisplayName("Contact No.")]
         public string Contact_no { get; set; }
         public string Occupation { get; set; }
         public string Sex { get; set; }
-        [DisplayName("Nationality")]
         public Nullable<int> Nationality_Id { get; set; }
         public Nullable<int> Height { get; set; }
         public Nullable<int> Weight { get; set; }

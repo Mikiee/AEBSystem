@@ -1,0 +1,88 @@
+﻿@model AEBSystem.Core.ViewModels.AirmenDropdownViewModel
+
+@{
+    ViewBag.Title = "Test Report Application";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+
+    <h2>Test Report Application</h2>
+
+</div>
+<div>
+    <div class="wrapper wrapper-content animated fadeInRight">
+
+        <div class="ibox-content">
+            <h2><strong>Applicant Details</strong></h2>
+            <hr />
+
+            @using (Html.BeginForm("AddApp", "TRTracking", FormMethod.Post, new { encType = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <form class="form-horizontal">
+
+                    <div class="form-group"> 
+                        @Html.LabelFor(model => model.Airmen.PEL, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Airmen.PEL, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Airmen.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Airmen.Description, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                        </div>
+                    </div>
+                    <hr />
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.LicenseTypeList.description, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+
+                            @Html.EditorFor(model => model.LicenseTypeList.description, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.LicenseTypeList.description, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+
+                            @Html.EditorFor(model => Model.TestReport.amType, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Airmen.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Airmen.Address, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="form-group">
+                        <p class="control-label col-md-2"><strong>Remarks</strong></p>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.TestReport.Remarks, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <br />
+
+
+
+                    <dv class="form-group">
+                        @Html.ActionLink("Back to List", "Index", new { search = Model.Airmen.PEL }, new { @class = "btn btn-md btn-primary", @role = "button" })
+                        @*@Html.ActionLink("Save", "Initial", new { PEL = Model.Airmen.PEL, amType = Model.Airmen.AirmenType_Id, remarks = Model.TestReport.Remarks }, new { @class = "btn btn-md btn-success", @role = "button" })*@
+                        <input type="submit" value="Save" class="btn btn-md btn-primary" />
+                    </dv>
+
+
+
+
+                </form>
+
+            }
+
+        </div>
+
+    </div>
+</div>

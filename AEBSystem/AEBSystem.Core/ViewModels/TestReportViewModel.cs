@@ -9,8 +9,8 @@ namespace AEBSystem.Core.ViewModels
 {
     public class TestReportViewModel
     {
-        IEnumerable<tblAirman> Airmen { get; set; }
-        IEnumerable<tblTestReportApplication> TestReports { get; set; }
-        IEnumerable<tblAMType> LicenseType { get; set; }
+        public tblTestReportApplication TestReport {get;set;}
+        public IEnumerable<tblAirman> Airmen { get; set; }
+        public IEnumerable<tblAMType> LicenseType { get; set; }
     }
 }

@@ -86,5 +86,14 @@ namespace AEBSystem.Core.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("trInitial", pELParameter, amTypeParameter, initialParameter, iDateParameter, remarksParameter);
         }
+    
+        public virtual ObjectResult<viewTRApplication> viewTRApplication(string search)
+        {
+            var searchParameter = search != null ?
+                new ObjectParameter("search", search) :
+                new ObjectParameter("search", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<viewTRApplication>("viewTRApplication", searchParameter);
+        }
     }
 }

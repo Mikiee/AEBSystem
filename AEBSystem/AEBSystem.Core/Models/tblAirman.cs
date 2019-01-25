@@ -16,7 +16,7 @@ namespace AEBSystem.Core.Models
     {
         public int Code { get; set; }
         public string Description { get; set; }
-        public Nullable<int> AirmenType_Id { get; set; }
+        public int AirmenType_Id { get; set; }
         public string Address { get; set; }
         public string Contact_no { get; set; }
         public string Occupation { get; set; }

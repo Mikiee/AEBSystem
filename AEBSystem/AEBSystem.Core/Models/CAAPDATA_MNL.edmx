@@ -198,6 +198,9 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
           <Parameter Name="iDate" Type="datetime" Mode="In" />
           <Parameter Name="Remarks" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="viewTRApplication" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="search" Type="varchar" Mode="In" />
+        </Function>
         <EntityContainer Name="CAAPDATA_MNLStoreContainer">
           <EntitySet Name="tblTestReportApplications" EntityType="Self.tblTestReportApplications" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblAirmen" EntityType="Self.tblAirmen" store:Type="Tables" store:Schema="dbo">
@@ -499,6 +502,9 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
             <Parameter Name="iDate" Mode="In" Type="DateTime" />
             <Parameter Name="Remarks" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="viewTRApplication" ReturnType="Collection(CAAPDATA_MNL.viewTRApplication)">
+          <Parameter Name="search" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="getAirmenAll">
           <Property Type="Int32" Name="recid" Nullable="true" />
@@ -540,6 +546,40 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
           <Property Name="Remarks" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="LastModifiedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
+        <ComplexType Name="viewTRApplication_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="PEL" Nullable="true" MaxLength="6" />
+          <Property Type="Int32" Name="amType" Nullable="true" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Initial" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="iDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ControlledBy" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ControlNo" Nullable="true" MaxLength="10" />
+          <Property Type="DateTime" Name="cDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ReleasedBy" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="rDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Remarks" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="LastModifiedBy" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Fullname" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="License_Type" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="viewTRApplication">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="PEL" Nullable="true" MaxLength="6" />
+          <Property Type="Int32" Name="amType" Nullable="true" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Initial" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="iDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ControlledBy" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ControlNo" Nullable="true" MaxLength="10" />
+          <Property Type="DateTime" Name="cDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ReleasedBy" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="rDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Remarks" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="LastModifiedBy" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Fullname" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="License_Type" Nullable="true" MaxLength="100" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -746,6 +786,27 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="trInitial" FunctionName="CAAPDATA_MNL.Store.trInitial" />
+          <FunctionImportMapping FunctionImportName="viewTRApplication" FunctionName="CAAPDATA_MNL.Store.viewTRApplication">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="CAAPDATA_MNL.viewTRApplication">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PEL" ColumnName="PEL" />
+                <ScalarProperty Name="amType" ColumnName="amType" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Initial" ColumnName="Initial" />
+                <ScalarProperty Name="iDate" ColumnName="iDate" />
+                <ScalarProperty Name="ControlledBy" ColumnName="ControlledBy" />
+                <ScalarProperty Name="ControlNo" ColumnName="ControlNo" />
+                <ScalarProperty Name="cDate" ColumnName="cDate" />
+                <ScalarProperty Name="ReleasedBy" ColumnName="ReleasedBy" />
+                <ScalarProperty Name="rDate" ColumnName="rDate" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+                <ScalarProperty Name="License_Type" ColumnName="License Type" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

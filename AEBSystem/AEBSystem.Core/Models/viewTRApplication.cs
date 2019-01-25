@@ -10,13 +10,12 @@
 namespace AEBSystem.Core.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class tblTestReportApplication
+    public partial class viewTRApplication
     {
         public int Id { get; set; }
         public string PEL { get; set; }
-        public int amType { get; set; }
+        public Nullable<int> amType { get; set; }
         public string Status { get; set; }
         public string Initial { get; set; }
         public Nullable<System.DateTime> iDate { get; set; }
@@ -27,5 +26,7 @@ namespace AEBSystem.Core.Models
         public Nullable<System.DateTime> rDate { get; set; }
         public string Remarks { get; set; }
         public string LastModifiedBy { get; set; }
+        public string Fullname { get; set; }
+        public string License_Type { get; set; }
     }
 }

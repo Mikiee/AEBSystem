@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CAAPDATA_VAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CAAPDATA_VA.dbo.tblAirmen' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblAirmen">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="AirmenType_Id" Type="int" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="Contact_no" Type="nvarchar" MaxLength="20" />
+          <Property Name="Occupation" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sex" Type="nvarchar" MaxLength="10" />
+          <Property Name="Nationality_Id" Type="int" />
+          <Property Name="Height" Type="int" />
+          <Property Name="Weight" Type="int" />
+          <Property Name="Hair_Color" Type="nvarchar" MaxLength="10" />
+          <Property Name="Build" Type="nvarchar" MaxLength="50" />
+          <Property Name="Realtionship" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date_Naturalized" Type="datetime" />
+          <Property Name="Rel_Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="CivilStatus_Id" Type="int" />
+          <Property Name="Relative" Type="nvarchar" MaxLength="100" />
+          <Property Name="Date_Birth" Type="datetime" />
+          <Property Name="Complexion" Type="nvarchar" MaxLength="50" />
+          <Property Name="Citizenship_Id" Type="int" />
+          <Property Name="Employer" Type="nvarchar" MaxLength="100" />
+          <Property Name="Eye_Color" Type="nvarchar" MaxLength="10" />
+          <Property Name="Job_Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Rel_Contact" Type="nvarchar" MaxLength="20" />
+          <Property Name="PEL" Type="int" />
+          <Property Name="Loc" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityContainer Name="CAAPDATA_VAModelStoreContainer">
+          <EntitySet Name="tblAirmen" EntityType="Self.tblAirmen" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblAirmen].[Code] AS [Code], 
+    [tblAirmen].[Description] AS [Description], 
+    [tblAirmen].[AirmenType_Id] AS [AirmenType_Id], 
+    [tblAirmen].[Address] AS [Address], 
+    [tblAirmen].[Contact_no] AS [Contact_no], 
+    [tblAirmen].[Occupation] AS [Occupation], 
+    [tblAirmen].[Sex] AS [Sex], 
+    [tblAirmen].[Nationality_Id] AS [Nationality_Id], 
+    [tblAirmen].[Height] AS [Height], 
+    [tblAirmen].[Weight] AS [Weight], 
+    [tblAirmen].[Hair_Color] AS [Hair_Color], 
+    [tblAirmen].[Build] AS [Build], 
+    [tblAirmen].[Realtionship] AS [Realtionship], 
+    [tblAirmen].[Date_Naturalized] AS [Date_Naturalized], 
+    [tblAirmen].[Rel_Address] AS [Rel_Address], 
+    [tblAirmen].[CivilStatus_Id] AS [CivilStatus_Id], 
+    [tblAirmen].[Relative] AS [Relative], 
+    [tblAirmen].[Date_Birth] AS [Date_Birth], 
+    [tblAirmen].[Complexion] AS [Complexion], 
+    [tblAirmen].[Citizenship_Id] AS [Citizenship_Id], 
+    [tblAirmen].[Employer] AS [Employer], 
+    [tblAirmen].[Eye_Color] AS [Eye_Color], 
+    [tblAirmen].[Job_Title] AS [Job_Title], 
+    [tblAirmen].[Rel_Contact] AS [Rel_Contact], 
+    [tblAirmen].[PEL] AS [PEL], 
+    [tblAirmen].[Loc] AS [Loc]
+    FROM [dbo].[tblAirmen] AS [tblAirmen]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CAAPDATA_VAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblAirman">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AirmenType_Id" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Contact_no" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Occupation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Nationality_Id" Type="Int32" />
+          <Property Name="Height" Type="Int32" />
+          <Property Name="Weight" Type="Int32" />
+          <Property Name="Hair_Color" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Build" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Realtionship" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Naturalized" Type="DateTime" Precision="3" />
+          <Property Name="Rel_Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CivilStatus_Id" Type="Int32" />
+          <Property Name="Relative" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Birth" Type="DateTime" Precision="3" />
+          <Property Name="Complexion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Citizenship_Id" Type="Int32" />
+          <Property Name="Employer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Eye_Color" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Job_Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Rel_Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PEL" Type="Int32" />
+          <Property Name="Loc" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="CAAPDATA_VA_DbSet" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblAirmen" EntityType="Self.tblAirman" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CAAPDATA_VAModelStoreContainer" CdmEntityContainer="CAAPDATA_VA_DbSet">
+          <EntitySetMapping Name="tblAirmen">
+            <EntityTypeMapping TypeName="CAAPDATA_VAModel.tblAirman">
+              <MappingFragment StoreEntitySet="tblAirmen">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="AirmenType_Id" ColumnName="AirmenType_Id" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Contact_no" ColumnName="Contact_no" />
+                <ScalarProperty Name="Occupation" ColumnName="Occupation" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Nationality_Id" ColumnName="Nationality_Id" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Hair_Color" ColumnName="Hair_Color" />
+                <ScalarProperty Name="Build" ColumnName="Build" />
+                <ScalarProperty Name="Realtionship" ColumnName="Realtionship" />
+                <ScalarProperty Name="Date_Naturalized" ColumnName="Date_Naturalized" />
+                <ScalarProperty Name="Rel_Address" ColumnName="Rel_Address" />
+                <ScalarProperty Name="CivilStatus_Id" ColumnName="CivilStatus_Id" />
+                <ScalarProperty Name="Relative" ColumnName="Relative" />
+                <ScalarProperty Name="Date_Birth" ColumnName="Date_Birth" />
+                <ScalarProperty Name="Complexion" ColumnName="Complexion" />
+                <ScalarProperty Name="Citizenship_Id" ColumnName="Citizenship_Id" />
+                <ScalarProperty Name="Employer" ColumnName="Employer" />
+                <ScalarProperty Name="Eye_Color" ColumnName="Eye_Color" />
+                <ScalarProperty Name="Job_Title" ColumnName="Job_Title" />
+                <ScalarProperty Name="Rel_Contact" ColumnName="Rel_Contact" />
+                <ScalarProperty Name="PEL" ColumnName="PEL" />
+                <ScalarProperty Name="Loc" ColumnName="Loc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

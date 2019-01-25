@@ -104,9 +104,25 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CAAPDATA_NLA.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\CAAPDATA_VA.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CAAPDATA_VA.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAAPDATA_VA.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CAAPDATA_VA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAAPDATA_VA.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CAAPDATA_VA.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\ExamHistoryResult.cs">
       <DependentUpon>CAAPDATA_MNL.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ExamHistoryResultClone.cs" />
     <Compile Include="Models\getAirmenAll.cs">
       <DependentUpon>CAAPDATA_MNL.tt</DependentUpon>
     </Compile>
@@ -146,8 +162,13 @@
     <Compile Include="Models\tblUser.cs">
       <DependentUpon>CAAPDATA_MNL.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\viewTRApplication.cs">
+      <DependentUpon>CAAPDATA_MNL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\viewTRApplication_Result.cs">
+      <DependentUpon>CAAPDATA_MNL.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\AirmenDropdownViewModel.cs" />
     <Compile Include="ViewModels\AirmenViewModel.cs" />
     <Compile Include="ViewModels\HistoryViewModel.cs" />
     <Compile Include="ViewModels\TestReportStatusViewModel.cs" />
@@ -175,6 +196,13 @@
     </EntityDeploy>
     <None Include="Models\CAAPDATA_NLA.edmx.diagram">
       <DependentUpon>CAAPDATA_NLA.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="Models\CAAPDATA_VA.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CAAPDATA_VA.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\CAAPDATA_VA.edmx.diagram">
+      <DependentUpon>CAAPDATA_VA.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -212,6 +240,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CAAPDATA_NLA.edmx</DependentUpon>
       <LastGenOutput>CAAPDATA_NLA.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\CAAPDATA_VA.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CAAPDATA_VA.edmx</DependentUpon>
+      <LastGenOutput>CAAPDATA_VA.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\CAAPDATA_VA.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CAAPDATA_VA.edmx</DependentUpon>
+      <LastGenOutput>CAAPDATA_VA.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

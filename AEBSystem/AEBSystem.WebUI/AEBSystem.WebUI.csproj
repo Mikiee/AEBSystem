@@ -1654,8 +1654,10 @@
     <Content Include="Views\Shared\_TopNavbar2.cshtml" />
     <Content Include="Views\TRTracking\Index.cshtml" />
     <Content Include="Views\TRTracking\Details.cshtml" />
-    <None Include="Views\TRTracking\AddApp.cshtml" />
+    <None Include="Views\TRTracking\AddApp_cshtml" />
     <Content Include="Views\TRTracking\ViewApplications.cshtml" />
+    <Content Include="Views\TRTracking\Initial.cshtml" />
+    <Content Include="Views\TRTracking\Control.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

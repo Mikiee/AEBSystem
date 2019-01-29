@@ -76,20 +76,18 @@
                         @{                           
                             if (item.Status.Contains("Initial"))
                             {
-                                @Html.ActionLink("Select", "Control", new { Id = item.Id, PEL = item.PEL }, new { @class = "btn btn-sm btn-primary", @role = "button" })
+                                @Html.ActionLink("Control", "Control", new { Id = item.Id, PEL = item.PEL }, new { @class = "btn btn-sm btn-success", @role = "button" })
                             }
                             else if (item.Status.Contains("Controlled"))
                             {
-                                @Html.ActionLink("Select", "ExamHistory", new { Id = item.Id }, new { @class = "btn btn-sm btn-primary", @role = "button" })
+                                @Html.ActionLink("Pending", "Pending", new { Id = item.Id, PEL = item.PEL }, new { @class = "btn btn-sm btn-danger", @role = "button" })
                             }
                             else if (item.Status.Contains("Pending"))
                             {
-                                @Html.ActionLink("Select", "ExamHistory", new { Id = item.Id }, new { @class = "btn btn-sm btn-primary", @role = "button" })
+                                @Html.ActionLink("Release", "Release", new { Id = item.Id }, new { @class = "btn btn-sm btn-primary", @role = "button" })
                             }
-
-
-
-                        }
+                        } | 
+                        @Html.ActionLink("Details", "TestReportStatusFullView", new { Id = item.Id, PEL = item.PEL }, new { @class = "btn btn-sm btn-success", @role = "button" })
                        
                     </td>
                     <td>

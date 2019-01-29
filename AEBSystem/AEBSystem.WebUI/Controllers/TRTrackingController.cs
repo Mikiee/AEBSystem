@@ -12,7 +12,7 @@ using AEBSystem.DataAccess.SQL;
 
 namespace AEBSystem.WebUI.Controllers
 {
-    public class TRTrackingController : Controller 
+    public class TRTrackingController : Controller
     {
 
         // GET: TRTracking
@@ -20,23 +20,23 @@ namespace AEBSystem.WebUI.Controllers
         CAAPDATA_NLA_DbSet db_nla = new CAAPDATA_NLA_DbSet();
         CAAPDATA_MA_DbSet db_ma = new CAAPDATA_MA_DbSet();
         CAAPDATA_VA_DbSet db_va = new CAAPDATA_VA_DbSet();
-       
+
 
         public ActionResult Index(string search)
         {
             var AirmenFromSP = db_mnl.getAirmen_all(search).ToList();
-            return View(AirmenFromSP);           
-          
-           
-        }    
-       
+            return View(AirmenFromSP);
+
+
+        }
+
         public ActionResult ExamHistory(string PEL, int amType)
-        {  
+        {
             List<ExamHistoryResult> history = new List<ExamHistoryResult>();
             history = db_mnl.ExamHistory(PEL, amType).ToList();
 
             ReportDocument rd = new ReportDocument();
-            rd.Load(Path.Combine(Server.MapPath("~/CrystalReports"),"ExamHistory.rpt"));
+            rd.Load(Path.Combine(Server.MapPath("~/CrystalReports"), "ExamHistory.rpt"));
 
             rd.SetDataSource(history);
             Response.Buffer = false;
@@ -45,12 +45,12 @@ namespace AEBSystem.WebUI.Controllers
 
             Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
             stream.Seek(0, SeekOrigin.Begin);
-            return File(stream, "application/pdf", PEL + "_" + amType +"_History.pdf");
+            return File(stream, "application/pdf", PEL + "_" + amType + "_History.pdf");
         }
 
         public ActionResult ViewApplications(string search)
         {
-            
+
             var am = db_mnl.getAirmen_all(search).ToList();
             var tr = db_mnl.tblTestReportApplications.ToList();
             var lic = db_mnl.tblAMTypes.ToList();
@@ -58,7 +58,7 @@ namespace AEBSystem.WebUI.Controllers
             var viewModel = (from a in am
                              join t in tr on a.PEL equals t.PEL
                              join l in lic on t.amType equals l.code
-                             where a.AirmenType.Equals(t.amType)    
+                             where a.AirmenType.Equals(t.amType)
                              orderby t.Id descending
                              select new TestReportStatusViewModel
                              {
@@ -157,43 +157,49 @@ namespace AEBSystem.WebUI.Controllers
             var tr = new tblTestReportApplication
             {
                 //Description = testReport.Fullname,
-                
+
                 PEL = testReports.PEL,
                 amType = testReports.amType,
                 Status = "Initial",
                 Initial = testReports.Initial,
                 iDate = DateTime.Now,
                 Remarks = testReports.Remarks,
-                LastModifiedBy = testReports.LastModifiedBy 
-                
+                LastModifiedBy = testReports.LastModifiedBy,
+
+                //set date for datetime fields
+                cDate = DateTime.Now,
+                rDate = DateTime.Now
+
+
             };
 
-           
+
 
             db_mnl.tblTestReportApplications.Add(tr);
             db_mnl.SaveChanges();
-            
+
             return RedirectToAction("ViewApplications");
-            
 
 
-            
+
+
         }
 
         public ActionResult Control(int Id, string PEL)
         {
+            var am = db_mnl.getAirmen_all(PEL).ToList();
             var trList = db_mnl.tblTestReportApplications.ToList();
             var lic = db_mnl.tblAMTypes.ToList();
-            var tr = (from a in db_mnl.getAirmen_all(PEL).ToList()
-                      join l in lic on a.AirmenType equals l.code
-                      join t in trList on a.PEL equals t.PEL
+            var tr = (from t in trList
+                      join l in lic on t.amType equals l.code
+                      join a in am on t.PEL equals a.PEL
                       where t.Id.Equals(Id)
                       select new TestReportStatusViewModel
                       {
                           Id = t.Id,
                           PEL = t.PEL,
                           Fullname = a.Fullname,
-                          amType = l.code,
+                          amType = t.amType,
                           License = l.description,
                           Remarks = t.Remarks
 
@@ -208,13 +214,16 @@ namespace AEBSystem.WebUI.Controllers
             {
                 //Description = testReport.Fullname,
 
-               
+
                 Status = "Controlled",
-                ControlNo = testReports.ControllNo,
+                ControlNo = testReports.ControlNo,
                 ControlledBy = testReports.ControlledBy,
                 cDate = DateTime.Now,
                 Remarks = testReports.Remarks,
-                LastModifiedBy = testReports.LastModifiedBy
+                LastModifiedBy = testReports.LastModifiedBy,
+
+                //
+                rDate = DateTime.Now
 
             };
 
@@ -234,7 +243,82 @@ namespace AEBSystem.WebUI.Controllers
         }
 
 
+        public ActionResult TestReportStatusFullView(int Id, string PEL)
+        {
+            var am = db_mnl.getAirmen_all(PEL).ToList();
+            var trList = db_mnl.tblTestReportApplications.ToList();
+            var lic = db_mnl.tblAMTypes.ToList();
+            var tr = (from t in trList
+                      join l in lic on t.amType equals l.code
+                      join a in am on t.PEL equals a.PEL
+                      where t.Id.Equals(Id)
+                      select new TestReportStatusViewModel
+                      {
+                          Id = t.Id,
+                          PEL = t.PEL,
+                          Fullname = a.Fullname,
+                          amType = t.amType,
+                          License = l.description,
+                          Status = t.Status,
+                          Remarks = t.Remarks,
+                          Initial = t.Initial,
+                          iDate = t.iDate,
+                          ControlNo = t.ControlNo,
+                          ControlledBy = t.ControlledBy,
+                          cDate = t.cDate,
+                          ReleasedBy = t.ReleasedBy,
+                          rDate = t.rDate,
+                          LastModifiedBy = t.LastModifiedBy
+                      }).FirstOrDefault();
+            return View(tr);
+        }
 
+        public ActionResult Pending(int Id, string PEL)
+        {
+            var am = db_mnl.getAirmen_all(PEL).ToList();
+            var trList = db_mnl.tblTestReportApplications.ToList();
+            var lic = db_mnl.tblAMTypes.ToList();
+            var tr = (from t in trList
+                      join l in lic on t.amType equals l.code
+                      join a in am on t.PEL equals a.PEL
+                      where t.Id.Equals(Id)
+                      select new TestReportStatusViewModel
+                      {
+                          Id = t.Id,
+                          PEL = t.PEL,
+                          Fullname = a.Fullname,
+                          amType = t.amType,
+                          License = l.description,
+                          Remarks = t.Remarks
+                      }).FirstOrDefault();
+            return View(tr);
+        }
+
+        [HttpPost]
+        public ActionResult Pending(TestReportStatusViewModel testReports, int Id)
+        {
+            var tr = new tblTestReportApplication
+            {
+                //Description = testReport.Fullname,
+
+
+                Status = "Pending",               
+                LastModifiedBy = testReports.LastModifiedBy,
+
+                //
+                rDate = DateTime.Now
+
+            };
+
+            tblTestReportApplication trToEdit = db_mnl.tblTestReportApplications.Find(Id);
+
+            trToEdit.Status = tr.Status;           
+            trToEdit.LastModifiedBy = tr.LastModifiedBy;
+
+            db_mnl.SaveChanges();
+
+            return RedirectToAction("ViewApplications");
+        }
     }
 }
             

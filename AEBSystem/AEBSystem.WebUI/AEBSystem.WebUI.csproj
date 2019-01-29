@@ -1658,6 +1658,8 @@
     <Content Include="Views\TRTracking\ViewApplications.cshtml" />
     <Content Include="Views\TRTracking\Initial.cshtml" />
     <Content Include="Views\TRTracking\Control.cshtml" />
+    <Content Include="Views\TRTracking\TestReportStatusFullView.cshtml" />
+    <Content Include="Views\TRTracking\Pending.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

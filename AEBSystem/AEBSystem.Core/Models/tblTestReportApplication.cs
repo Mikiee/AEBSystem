@@ -19,13 +19,15 @@ namespace AEBSystem.Core.Models
         public int amType { get; set; }
         public string Status { get; set; }
         public string Initial { get; set; }
-        public Nullable<System.DateTime> iDate { get; set; }
+        public System.DateTime iDate { get; set; }
         public string ControlledBy { get; set; }
         public string ControlNo { get; set; }
-        public Nullable<System.DateTime> cDate { get; set; }
+        public System.DateTime cDate { get; set; }
         public string ReleasedBy { get; set; }
-        public Nullable<System.DateTime> rDate { get; set; }
+        public System.DateTime rDate { get; set; }
         public string Remarks { get; set; }
         public string LastModifiedBy { get; set; }
+        public System.DateTime pDate { get; set; }
+        public System.DateTime Received { get; set; }
     }
 }

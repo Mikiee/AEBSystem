@@ -20,11 +20,17 @@ namespace AEBSystem.Core.ViewModels
         public string License { get; set; }
         public string Status { get; set; }
         public string Initial { get; set; }
+        [DisplayName("Initial Date of Application")]
         public DateTime iDate { get; set; }
+        [DisplayName("Controlled By")]
         public string ControlledBy { get; set; }
-        public string ControllNo { get; set; }
+        [DisplayName("Control No.")]
+        public string ControlNo { get; set; }
+        [DisplayName("Controlled Date")]
         public DateTime cDate { get; set; }
+        [DisplayName("Released By")]
         public string ReleasedBy { get; set; }
+        [DisplayName("Released Date")]
         public DateTime rDate { get; set; }
         public string Remarks { get; set; }
         public string LastModifiedBy { get; set; }

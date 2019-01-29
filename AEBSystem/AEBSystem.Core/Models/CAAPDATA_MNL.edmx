@@ -10,10 +10,11 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblAirmen' does not have a primary ke
         <EntityType Name="tblAirmen">
           <Key>
             <PropertyRef Name="Code" />
+            
           </Key>
           <Property Name="Code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="100" />
-          <Property Name="AirmenType_Id" Type="int" />
+          <Property Name="AirmenType_Id" Type="int" Nullable="false" />
           <Property Name="Address" Type="varchar" MaxLength="500" />
           <Property Name="Contact_no" Type="nvarchar" MaxLength="20" />
           <Property Name="Occupation" Type="nvarchar" MaxLength="50" />
@@ -159,15 +160,17 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblSchools' does not have a primary k
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PEL" Type="varchar" MaxLength="6" />
-          <Property Name="amType" Type="int" />
+          <Property Name="amType" Type="int" Nullable="false" />
           <Property Name="Status" Type="varchar" MaxLength="50" />
           <Property Name="Initial" Type="varchar" MaxLength="20" />
-          <Property Name="iDate" Type="datetime" />
+          <Property Name="iDate" Type="datetime" Nullable="false" />
           <Property Name="ControlledBy" Type="varchar" MaxLength="20" />
           <Property Name="ControlNo" Type="varchar" MaxLength="10" />
-          <Property Name="cDate" Type="datetime" />
+          <Property Name="cDate" Type="datetime" Nullable="false" />
+          <Property Name="pDate" Type="datetime" Nullable="false" />
+          <Property Name="Received" Type="datetime" Nullable="false" />
           <Property Name="ReleasedBy" Type="varchar" MaxLength="20" />
-          <Property Name="rDate" Type="datetime" />
+          <Property Name="rDate" Type="datetime" Nullable="false" />
           <Property Name="Remarks" Type="varchar" MaxLength="255" />
           <Property Name="LastModifiedBy" Type="varchar" MaxLength="20" />
         </EntityType>
@@ -342,7 +345,7 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
           </Key>
           <Property Name="Code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="AirmenType_Id" Type="Int32" />
+          <Property Name="AirmenType_Id" Type="Int32" Nullable="false" />
           <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Contact_no" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Occupation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -534,17 +537,19 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PEL" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
-          <Property Name="amType" Type="Int32" />
+          <Property Name="amType" Type="Int32" Nullable="false" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Initial" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="iDate" Type="DateTime" Precision="3" />
+          <Property Name="iDate" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="ControlledBy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="ControlNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="cDate" Type="DateTime" Precision="3" />
+          <Property Name="cDate" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="ReleasedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="rDate" Type="DateTime" Precision="3" />
+          <Property Name="rDate" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="Remarks" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="LastModifiedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="pDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Received" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <ComplexType Name="viewTRApplication_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
@@ -769,6 +774,8 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
           <EntitySetMapping Name="tblTestReportApplications">
             <EntityTypeMapping TypeName="CAAPDATA_MNL.tblTestReportApplication">
               <MappingFragment StoreEntitySet="tblTestReportApplications">
+                <ScalarProperty Name="Received" ColumnName="Received" />
+                <ScalarProperty Name="pDate" ColumnName="pDate" />
                 <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
                 <ScalarProperty Name="Remarks" ColumnName="Remarks" />
                 <ScalarProperty Name="rDate" ColumnName="rDate" />

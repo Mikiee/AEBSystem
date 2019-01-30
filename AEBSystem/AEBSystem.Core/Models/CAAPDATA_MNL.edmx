@@ -173,6 +173,7 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblSchools' does not have a primary k
           <Property Name="rDate" Type="datetime" Nullable="false" />
           <Property Name="Remarks" Type="varchar" MaxLength="255" />
           <Property Name="LastModifiedBy" Type="varchar" MaxLength="20" />
+          <Property Name="BatchNo" Type="varchar" MaxLength="10" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -193,6 +194,10 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
         </Function>
         <Function Name="getAirmen_all" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Search" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="trBatchUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Status" Type="varchar" Mode="In" />
+          <Parameter Name="BatchNo" Type="varchar" Mode="In" />
         </Function>
         <Function Name="trInitial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="PEL" Type="varchar" Mode="In" />
@@ -508,6 +513,10 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
           <FunctionImport Name="viewTRApplication" ReturnType="Collection(CAAPDATA_MNL.viewTRApplication)">
           <Parameter Name="search" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="trBatchUpdate">
+            <Parameter Name="Status" Mode="In" Type="String" />
+            <Parameter Name="BatchNo" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="getAirmenAll">
           <Property Type="Int32" Name="recid" Nullable="true" />
@@ -550,6 +559,7 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
           <Property Name="LastModifiedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="pDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Received" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BatchNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         <ComplexType Name="viewTRApplication_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
@@ -774,6 +784,7 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
           <EntitySetMapping Name="tblTestReportApplications">
             <EntityTypeMapping TypeName="CAAPDATA_MNL.tblTestReportApplication">
               <MappingFragment StoreEntitySet="tblTestReportApplications">
+                <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
                 <ScalarProperty Name="Received" ColumnName="Received" />
                 <ScalarProperty Name="pDate" ColumnName="pDate" />
                 <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
@@ -814,6 +825,7 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="trBatchUpdate" FunctionName="CAAPDATA_MNL.Store.trBatchUpdate" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -26,50 +26,43 @@
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.PEL, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.PEL, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.PEL, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                         @Html.ValidationMessageFor(model => model.PEL, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.Fullname, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Fullname, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.Fullname, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                         @Html.ValidationMessageFor(model => model.Fullname, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.amType, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.amType, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.amType, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                         @Html.ValidationMessageFor(model => model.amType, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.License, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.License, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.License, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                         @Html.ValidationMessageFor(model => model.License, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
+               
 
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.LastModifiedBy, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.LastModifiedBy, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.LastModifiedBy, new { htmlAttributes = new { @class = "form-control"} })
                         @Html.ValidationMessageFor(model => model.LastModifiedBy, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -83,7 +76,7 @@
         }
 
         <div>
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink("Back to List", "ViewApplications")
         </div>
     </div>
 </div>

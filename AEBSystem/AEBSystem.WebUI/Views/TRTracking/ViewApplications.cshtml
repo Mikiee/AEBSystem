@@ -22,7 +22,9 @@
             <div class="row">
                 <div class="col-sm-6">
                     <h3>
-                        <u>@Html.ActionLink("Go to Search Airmen", "Index")</u>
+                        <u>@Html.ActionLink("Go to Search Airmen", "Index")</u> | 
+                        <u>@Html.ActionLink("Batch Process", "Index")</u> 
+                       
                     </h3>
                 </div>
                 <div class="col-sm-6">
@@ -87,7 +89,7 @@
                                 @Html.ActionLink("Release", "Release", new { Id = item.Id }, new { @class = "btn btn-sm btn-primary", @role = "button" })
                             }
                         } | 
-                        @Html.ActionLink("Details", "TestReportStatusFullView", new { Id = item.Id, PEL = item.PEL }, new { @class = "btn btn-sm btn-success", @role = "button" })
+                        @Html.ActionLink("Details", "TestReportStatusFullView", new { Id = item.Id, PEL = item.PEL }, new { @class = "btn btn-sm btn-default", @role = "button" })
                        
                     </td>
                     <td>

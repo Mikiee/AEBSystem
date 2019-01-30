@@ -166,9 +166,11 @@ namespace AEBSystem.WebUI.Controllers
                 Remarks = testReports.Remarks,
                 LastModifiedBy = testReports.LastModifiedBy,
 
-                //set date for datetime fields
+                //set date for NOT NULL datetime fields
                 cDate = DateTime.Now,
-                rDate = DateTime.Now
+                rDate = DateTime.Now,
+                pDate = DateTime.Now,
+                Received = DateTime.Now
 
 
             };
@@ -216,14 +218,12 @@ namespace AEBSystem.WebUI.Controllers
 
 
                 Status = "Controlled",
+                BatchNo = testReports.BatchNo,
                 ControlNo = testReports.ControlNo,
                 ControlledBy = testReports.ControlledBy,
                 cDate = DateTime.Now,
                 Remarks = testReports.Remarks,
-                LastModifiedBy = testReports.LastModifiedBy,
-
-                //
-                rDate = DateTime.Now
+                LastModifiedBy = testReports.LastModifiedBy,              
 
             };
 
@@ -232,6 +232,7 @@ namespace AEBSystem.WebUI.Controllers
             trToEdit.Status = tr.Status;
             trToEdit.ControlNo = tr.ControlNo;
             trToEdit.ControlledBy = tr.ControlledBy;
+            trToEdit.BatchNo = tr.BatchNo;
             trToEdit.cDate = tr.cDate;
             trToEdit.Remarks = tr.Remarks;
             trToEdit.LastModifiedBy = tr.LastModifiedBy;
@@ -265,7 +266,10 @@ namespace AEBSystem.WebUI.Controllers
                           iDate = t.iDate,
                           ControlNo = t.ControlNo,
                           ControlledBy = t.ControlledBy,
+                          BatchNo = t.BatchNo,
                           cDate = t.cDate,
+                          pDate = t.pDate,
+                          Recieved = t.Received,
                           ReleasedBy = t.ReleasedBy,
                           rDate = t.rDate,
                           LastModifiedBy = t.LastModifiedBy
@@ -302,11 +306,11 @@ namespace AEBSystem.WebUI.Controllers
                 //Description = testReport.Fullname,
 
 
-                Status = "Pending",               
+                Status = "Pending",
+                pDate = DateTime.Now,
                 LastModifiedBy = testReports.LastModifiedBy,
 
-                //
-                rDate = DateTime.Now
+               
 
             };
 
@@ -318,6 +322,11 @@ namespace AEBSystem.WebUI.Controllers
             db_mnl.SaveChanges();
 
             return RedirectToAction("ViewApplications");
+        }
+
+        public ActionResult BatchProcess(string batchNo, string Status)
+        {
+            var b = db_mnl.trBatchUpdate(Status, batchNo);
         }
     }
 }

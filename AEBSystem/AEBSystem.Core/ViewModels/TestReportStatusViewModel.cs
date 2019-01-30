@@ -28,13 +28,16 @@ namespace AEBSystem.Core.ViewModels
         public string ControlNo { get; set; }
         [DisplayName("Controlled Date")]
         public DateTime cDate { get; set; }
+        [DisplayName("Date Pending")]
+        public DateTime pDate { get; set; }
+        [DisplayName("Date Recieved")]
+        public DateTime Recieved { get; set; }
         [DisplayName("Released By")]
         public string ReleasedBy { get; set; }
         [DisplayName("Released Date")]
         public DateTime rDate { get; set; }
         public string Remarks { get; set; }
         public string LastModifiedBy { get; set; }
-
-       
+        public string BatchNo { get; set; }       
     }
 }

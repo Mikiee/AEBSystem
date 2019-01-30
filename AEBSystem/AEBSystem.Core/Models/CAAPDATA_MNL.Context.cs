@@ -95,5 +95,18 @@ namespace AEBSystem.Core.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<viewTRApplication>("viewTRApplication", searchParameter);
         }
+    
+        public virtual int trBatchUpdate(string status, string batchNo)
+        {
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            var batchNoParameter = batchNo != null ?
+                new ObjectParameter("BatchNo", batchNo) :
+                new ObjectParameter("BatchNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("trBatchUpdate", statusParameter, batchNoParameter);
+        }
     }
 }

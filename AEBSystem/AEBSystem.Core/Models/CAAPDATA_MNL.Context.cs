@@ -96,7 +96,7 @@ namespace AEBSystem.Core.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<viewTRApplication>("viewTRApplication", searchParameter);
         }
     
-        public virtual int trBatchUpdate(string status, string batchNo)
+        public virtual int trBatchUpdate(string status, string batchNo, string lastModifiedBy, Nullable<System.DateTime> pendingDate, Nullable<System.DateTime> recievedDate)
         {
             var statusParameter = status != null ?
                 new ObjectParameter("Status", status) :
@@ -106,7 +106,61 @@ namespace AEBSystem.Core.Models
                 new ObjectParameter("BatchNo", batchNo) :
                 new ObjectParameter("BatchNo", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("trBatchUpdate", statusParameter, batchNoParameter);
+            var lastModifiedByParameter = lastModifiedBy != null ?
+                new ObjectParameter("LastModifiedBy", lastModifiedBy) :
+                new ObjectParameter("LastModifiedBy", typeof(string));
+    
+            var pendingDateParameter = pendingDate.HasValue ?
+                new ObjectParameter("PendingDate", pendingDate) :
+                new ObjectParameter("PendingDate", typeof(System.DateTime));
+    
+            var recievedDateParameter = recievedDate.HasValue ?
+                new ObjectParameter("RecievedDate", recievedDate) :
+                new ObjectParameter("RecievedDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("trBatchUpdate", statusParameter, batchNoParameter, lastModifiedByParameter, pendingDateParameter, recievedDateParameter);
+        }
+    
+        public virtual int trTagAsPending(string status, string batchNo, string lastModifiedBy, Nullable<System.DateTime> pendingDate)
+        {
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            var batchNoParameter = batchNo != null ?
+                new ObjectParameter("BatchNo", batchNo) :
+                new ObjectParameter("BatchNo", typeof(string));
+    
+            var lastModifiedByParameter = lastModifiedBy != null ?
+                new ObjectParameter("LastModifiedBy", lastModifiedBy) :
+                new ObjectParameter("LastModifiedBy", typeof(string));
+    
+            var pendingDateParameter = pendingDate.HasValue ?
+                new ObjectParameter("PendingDate", pendingDate) :
+                new ObjectParameter("PendingDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("trTagAsPending", statusParameter, batchNoParameter, lastModifiedByParameter, pendingDateParameter);
+        }
+    
+        public virtual int trTagAsRecieved(string status, string batchNo, string lastModifiedBy, Nullable<System.DateTime> recievedDate)
+        {
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            var batchNoParameter = batchNo != null ?
+                new ObjectParameter("BatchNo", batchNo) :
+                new ObjectParameter("BatchNo", typeof(string));
+    
+            var lastModifiedByParameter = lastModifiedBy != null ?
+                new ObjectParameter("LastModifiedBy", lastModifiedBy) :
+                new ObjectParameter("LastModifiedBy", typeof(string));
+    
+            var recievedDateParameter = recievedDate.HasValue ?
+                new ObjectParameter("RecievedDate", recievedDate) :
+                new ObjectParameter("RecievedDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("trTagAsRecieved", statusParameter, batchNoParameter, lastModifiedByParameter, recievedDateParameter);
         }
     }
 }

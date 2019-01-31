@@ -215,19 +215,18 @@ namespace AEBSystem.WebUI.Controllers
             var tr = new tblTestReportApplication
             {
                 //Description = testReport.Fullname,
-
-
                 Status = "Controlled",
                 BatchNo = testReports.BatchNo,
                 ControlNo = testReports.ControlNo,
                 ControlledBy = testReports.ControlledBy,
                 cDate = DateTime.Now,
                 Remarks = testReports.Remarks,
-                LastModifiedBy = testReports.LastModifiedBy,              
+                LastModifiedBy = testReports.LastModifiedBy,
 
             };
 
-            tblTestReportApplication trToEdit = db_mnl.tblTestReportApplications.Find(Id);
+
+            tblTestReportApplication trToEdit = db_mnl.tblTestReportApplications.Find(Id);           
 
             trToEdit.Status = tr.Status;
             trToEdit.ControlNo = tr.ControlNo;
@@ -237,9 +236,16 @@ namespace AEBSystem.WebUI.Controllers
             trToEdit.Remarks = tr.Remarks;
             trToEdit.LastModifiedBy = tr.LastModifiedBy;
 
+            if (trToEdit.BatchNo == null && trToEdit.ControlNo ==null)
+            {
+                return View();
+            }
             db_mnl.SaveChanges();
-
             return RedirectToAction("ViewApplications");
+
+
+
+
 
         }
 
@@ -324,9 +330,29 @@ namespace AEBSystem.WebUI.Controllers
             return RedirectToAction("ViewApplications");
         }
 
-        public ActionResult BatchProcess(string batchNo, string Status)
+        public ActionResult BatchProcess()
         {
-            var b = db_mnl.trBatchUpdate(Status, batchNo);
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult BatchProcess(string BatchNo, string Status)
+        {
+            var user = "maabulag"; //change this to user log in info
+            
+            if (Status == "Pending")
+            { 
+                //tag batch as Pending for Signature
+                db_mnl.trTagAsPending(Status, BatchNo, user, DateTime.Now);
+            }
+            else
+            {
+                //tag batch as Recieved
+                db_mnl.trTagAsRecieved(Status, BatchNo, user, DateTime.Now);
+            }
+
+            
+            return RedirectToAction("ViewApplications");
         }
     }
 }

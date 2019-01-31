@@ -1660,6 +1660,8 @@
     <Content Include="Views\TRTracking\Control.cshtml" />
     <Content Include="Views\TRTracking\TestReportStatusFullView.cshtml" />
     <Content Include="Views\TRTracking\Pending.cshtml" />
+    <Content Include="Views\TRTracking\BatchProcess_.cshtml" />
+    <Content Include="Views\TRTracking\BatchProcess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

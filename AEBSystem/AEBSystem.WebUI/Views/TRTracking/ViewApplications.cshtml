@@ -23,12 +23,10 @@
                 <div class="col-sm-6">
                     <h3>
                         <u>@Html.ActionLink("Go to Search Airmen", "Index")</u> | 
-                        <u>@Html.ActionLink("Batch Process", "Index")</u> 
-                       
+                        <u>@Html.ActionLink("Batch Process", "BatchProcess")</u>                        
                     </h3>
                 </div>
                 <div class="col-sm-6">
-
                     <div class="input-group">
                         @*<input type="text" placeholder="Search" class="input-sm form-control"/>*@
                         @Html.TextBox("search", null, new { @class = "input-sm form-control" })<span class="input-group-btn">
@@ -60,8 +58,6 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Status)
                 </th>
-
-
                 <th>
                     @Html.DisplayNameFor(model => model.Remarks)
                 </th>
@@ -75,21 +71,18 @@
             {
                 <tr>
                     <td>
+                        @Html.ActionLink("Details", "TestReportStatusFullView", new { Id = item.Id, PEL = item.PEL }, new { @class = "btn btn-sm btn-outline btn-default", @role = "button" }) | 
                         @{                           
                             if (item.Status.Contains("Initial"))
                             {
-                                @Html.ActionLink("Control", "Control", new { Id = item.Id, PEL = item.PEL }, new { @class = "btn btn-sm btn-success", @role = "button" })
+                                @Html.ActionLink("Control", "Control", new { Id = item.Id, PEL = item.PEL }, new { @class = "btn btn-sm btn-outline btn-success", @role = "button" })
                             }
-                            else if (item.Status.Contains("Controlled"))
+                            
+                            else if (item.Status.Contains("Recieved"))
                             {
-                                @Html.ActionLink("Pending", "Pending", new { Id = item.Id, PEL = item.PEL }, new { @class = "btn btn-sm btn-danger", @role = "button" })
+                                @Html.ActionLink("Release", "Release", new { Id = item.Id }, new { @class = "btn btn-sm btn-outline btn-primary", @role = "button" })
                             }
-                            else if (item.Status.Contains("Pending"))
-                            {
-                                @Html.ActionLink("Release", "Release", new { Id = item.Id }, new { @class = "btn btn-sm btn-primary", @role = "button" })
-                            }
-                        } | 
-                        @Html.ActionLink("Details", "TestReportStatusFullView", new { Id = item.Id, PEL = item.PEL }, new { @class = "btn btn-sm btn-default", @role = "button" })
+                        }                       
                        
                     </td>
                     <td>
@@ -129,23 +122,14 @@
                             }
                             <span class="@cssClass">@Html.DisplayFor(modelItem => item.Status)</span>
                         }
-
-
-
                     </td>
-
-
                     <td>
                         @Html.DisplayFor(modelItem => item.Remarks)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.LastModifiedBy)
                     </td>
-                    @*<td>
-                            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-                            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-                        </td>*@
+                    
                 </tr>
                             }
 

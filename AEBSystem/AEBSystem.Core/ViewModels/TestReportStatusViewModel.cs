@@ -36,6 +36,8 @@ namespace AEBSystem.Core.ViewModels
         public string ReleasedBy { get; set; }
         [DisplayName("Released Date")]
         public DateTime rDate { get; set; }
+        [DisplayName("Claimed By")]
+        public string ClaimedBy { get; set; }
         public string Remarks { get; set; }
         public string LastModifiedBy { get; set; }
         public string BatchNo { get; set; }       

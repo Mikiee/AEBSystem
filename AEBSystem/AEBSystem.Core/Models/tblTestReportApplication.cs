@@ -30,5 +30,6 @@ namespace AEBSystem.Core.Models
         public System.DateTime pDate { get; set; }
         public System.DateTime Received { get; set; }
         public string BatchNo { get; set; }
+        public string ClaimedBy { get; set; }
     }
 }

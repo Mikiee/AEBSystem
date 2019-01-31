@@ -171,6 +171,7 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblSchools' does not have a primary k
           <Property Name="Received" Type="datetime" Nullable="false" />
           <Property Name="ReleasedBy" Type="varchar" MaxLength="20" />
           <Property Name="rDate" Type="datetime" Nullable="false" />
+          <Property Name="ClaimedBy" Type="varchar" MaxLength="50" />
           <Property Name="Remarks" Type="varchar" MaxLength="255" />
           <Property Name="LastModifiedBy" Type="varchar" MaxLength="20" />
           <Property Name="BatchNo" Type="varchar" MaxLength="10" />
@@ -195,16 +196,24 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
         <Function Name="getAirmen_all" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Search" Type="varchar" Mode="In" />
         </Function>
-        <Function Name="trBatchUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Status" Type="varchar" Mode="In" />
-          <Parameter Name="BatchNo" Type="varchar" Mode="In" />
-        </Function>
         <Function Name="trInitial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="PEL" Type="varchar" Mode="In" />
           <Parameter Name="amType" Type="int" Mode="In" />
           <Parameter Name="Initial" Type="varchar" Mode="In" />
           <Parameter Name="iDate" Type="datetime" Mode="In" />
           <Parameter Name="Remarks" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="trTagAsPending" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Status" Type="varchar" Mode="In" />
+          <Parameter Name="BatchNo" Type="varchar" Mode="In" />
+          <Parameter Name="LastModifiedBy" Type="varchar" Mode="In" />
+          <Parameter Name="PendingDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="trTagAsRecieved" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Status" Type="varchar" Mode="In" />
+          <Parameter Name="BatchNo" Type="varchar" Mode="In" />
+          <Parameter Name="LastModifiedBy" Type="varchar" Mode="In" />
+          <Parameter Name="RecievedDate" Type="datetime" Mode="In" />
         </Function>
         <Function Name="viewTRApplication" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="search" Type="varchar" Mode="In" />
@@ -516,6 +525,21 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
           <FunctionImport Name="trBatchUpdate">
             <Parameter Name="Status" Mode="In" Type="String" />
             <Parameter Name="BatchNo" Mode="In" Type="String" />
+            <Parameter Name="LastModifiedBy" Mode="In" Type="String" />
+            <Parameter Name="PendingDate" Mode="In" Type="DateTime" />
+            <Parameter Name="RecievedDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="trTagAsPending">
+            <Parameter Name="Status" Mode="In" Type="String" />
+            <Parameter Name="BatchNo" Mode="In" Type="String" />
+            <Parameter Name="LastModifiedBy" Mode="In" Type="String" />
+            <Parameter Name="PendingDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="trTagAsRecieved">
+            <Parameter Name="Status" Mode="In" Type="String" />
+            <Parameter Name="BatchNo" Mode="In" Type="String" />
+            <Parameter Name="LastModifiedBy" Mode="In" Type="String" />
+            <Parameter Name="RecievedDate" Mode="In" Type="DateTime" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="getAirmenAll">
@@ -560,6 +584,7 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
           <Property Name="pDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Received" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="BatchNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ClaimedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <ComplexType Name="viewTRApplication_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
@@ -784,6 +809,7 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
           <EntitySetMapping Name="tblTestReportApplications">
             <EntityTypeMapping TypeName="CAAPDATA_MNL.tblTestReportApplication">
               <MappingFragment StoreEntitySet="tblTestReportApplications">
+                <ScalarProperty Name="ClaimedBy" ColumnName="ClaimedBy" />
                 <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
                 <ScalarProperty Name="Received" ColumnName="Received" />
                 <ScalarProperty Name="pDate" ColumnName="pDate" />
@@ -825,7 +851,8 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="trBatchUpdate" FunctionName="CAAPDATA_MNL.Store.trBatchUpdate" />
+          <FunctionImportMapping FunctionImportName="trTagAsPending" FunctionName="CAAPDATA_MNL.Store.trTagAsPending" />
+          <FunctionImportMapping FunctionImportName="trTagAsRecieved" FunctionName="CAAPDATA_MNL.Store.trTagAsRecieved" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

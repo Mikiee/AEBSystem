@@ -59,6 +59,8 @@
       <DependentUpon>ExamHistory.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Models\BatchProcessModel.cs" />
+    <Compile Include="Models\BatchProcessDropDown.cs" />
     <Compile Include="Models\CAAPDATA_MA.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

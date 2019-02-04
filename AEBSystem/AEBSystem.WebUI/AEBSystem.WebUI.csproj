@@ -193,6 +193,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TRTrackingController.cs" />
     <Compile Include="CrystalReports\ExamHistory.cs">
@@ -1246,6 +1247,7 @@
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <Content Include="pdf\example.pdf" />
     <Content Include="Scripts\api\typehead_collection.json" />
+    <Content Include="xml\LoginDetails.xml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1614,7 +1616,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_Layout_.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -1644,7 +1646,7 @@
     <Content Include="Scripts\plugins\topojson\LICENSE" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_SkinConfig.cshtml" />
-    <Content Include="Views\Shared\_Layout_2.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_Layout_3.cshtml" />
     <Content Include="Views\Shared\_Layout_4.cshtml" />
     <Content Include="Views\Shared\_Navigation.cshtml" />
@@ -1654,14 +1656,14 @@
     <Content Include="Views\Shared\_TopNavbar2.cshtml" />
     <Content Include="Views\TRTracking\Index.cshtml" />
     <Content Include="Views\TRTracking\Details.cshtml" />
-    <None Include="Views\TRTracking\AddApp_cshtml" />
     <Content Include="Views\TRTracking\ViewApplications.cshtml" />
     <Content Include="Views\TRTracking\Initial.cshtml" />
     <Content Include="Views\TRTracking\Control.cshtml" />
     <Content Include="Views\TRTracking\TestReportStatusFullView.cshtml" />
     <Content Include="Views\TRTracking\Pending.cshtml" />
-    <Content Include="Views\TRTracking\BatchProcess_.cshtml" />
     <Content Include="Views\TRTracking\BatchProcess.cshtml" />
+    <Content Include="Views\TRTracking\Release.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

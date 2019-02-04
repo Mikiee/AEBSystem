@@ -62,8 +62,18 @@
                     @Html.DisplayNameFor(model => model.Remarks)
                 </th>
                 <th>
+                    @Html.DisplayNameFor(model => model.BatchNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ControlNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ClaimedBy)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.LastModifiedBy)
                 </th>
+               
                 <th></th>
             </tr>
 
@@ -80,8 +90,9 @@
                             
                             else if (item.Status.Contains("Recieved"))
                             {
-                                @Html.ActionLink("Release", "Release", new { Id = item.Id }, new { @class = "btn btn-sm btn-outline btn-primary", @role = "button" })
+                                @Html.ActionLink("Release", "Release", new { Id = item.Id, PEL = item.PEL }, new { @class = "btn btn-sm btn-outline btn-primary", @role = "button" })
                             }
+
                         }                       
                        
                     </td>
@@ -112,9 +123,9 @@
                             {
                                 cssClass = "label label-danger";
                             }
-                            else if (item.Status.Contains("Released"))
+                            else if (item.Status.Contains("Recieved"))
                             {
-                                cssClass = "label label-danger";
+                                cssClass = "label label-primary";
                             }
                             else
                             {
@@ -125,6 +136,15 @@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Remarks)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BatchNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ControlNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClaimedBy)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.LastModifiedBy)

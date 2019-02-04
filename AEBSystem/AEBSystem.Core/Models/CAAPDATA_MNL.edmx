@@ -10,7 +10,7 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblAirmen' does not have a primary ke
         <EntityType Name="tblAirmen">
           <Key>
             <PropertyRef Name="Code" />
-            
+            <PropertyRef Name="AirmenType_Id" />
           </Key>
           <Property Name="Code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="100" />
@@ -196,13 +196,6 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
         <Function Name="getAirmen_all" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Search" Type="varchar" Mode="In" />
         </Function>
-        <Function Name="trInitial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="PEL" Type="varchar" Mode="In" />
-          <Parameter Name="amType" Type="int" Mode="In" />
-          <Parameter Name="Initial" Type="varchar" Mode="In" />
-          <Parameter Name="iDate" Type="datetime" Mode="In" />
-          <Parameter Name="Remarks" Type="varchar" Mode="In" />
-        </Function>
         <Function Name="trTagAsPending" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Status" Type="varchar" Mode="In" />
           <Parameter Name="BatchNo" Type="varchar" Mode="In" />
@@ -353,38 +346,6 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CAAPDATA_MNL" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="tblAirman">
-          <Key>
-            <PropertyRef Name="Code" />
-          </Key>
-          <Property Name="Code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="AirmenType_Id" Type="Int32" Nullable="false" />
-          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Contact_no" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Occupation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Sex" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Nationality_Id" Type="Int32" />
-          <Property Name="Height" Type="Int32" />
-          <Property Name="Weight" Type="Int32" />
-          <Property Name="Hair_Color" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Build" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Realtionship" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Date_Naturalized" Type="DateTime" Precision="3" />
-          <Property Name="Rel_Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="CivilStatus_Id" Type="Int32" />
-          <Property Name="Relative" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Date_Birth" Type="DateTime" Precision="3" />
-          <Property Name="Complexion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Citizenship_Id" Type="Int32" />
-          <Property Name="Employer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Eye_Color" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Job_Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Rel_Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="PEL" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="DegreeCourse" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Loc" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="tblAMType">
           <Key>
             <PropertyRef Name="code" />
@@ -493,7 +454,6 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
           <Property Name="Position" Type="String" MaxLength="55" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="CAAPDATA_MNL_DbSet" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="tblAirmen" EntityType="Self.tblAirman" />
           <EntitySet Name="tblAMTypes" EntityType="Self.tblAMType" />
           <EntitySet Name="tblAnswerSheet1" EntityType="Self.tblAnswerSheet1" />
           <EntitySet Name="tblAnswerSheet2" EntityType="Self.tblAnswerSheet2" />
@@ -541,6 +501,7 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
             <Parameter Name="LastModifiedBy" Mode="In" Type="String" />
             <Parameter Name="RecievedDate" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <EntitySet Name="tblAirmen" EntityType="CAAPDATA_MNL.tblAirman" />
         </EntityContainer>
         <ComplexType Name="getAirmenAll">
           <Property Type="Int32" Name="recid" Nullable="true" />
@@ -620,45 +581,45 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
           <Property Type="String" Name="Fullname" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="License_Type" Nullable="true" MaxLength="100" />
         </ComplexType>
+        <EntityType Name="tblAirman">
+          <Key>
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="AirmenType_Id" />
+          </Key>
+          <Property Name="Code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AirmenType_Id" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Contact_no" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Occupation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Nationality_Id" Type="Int32" />
+          <Property Name="Height" Type="Int32" />
+          <Property Name="Weight" Type="Int32" />
+          <Property Name="Hair_Color" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Build" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Realtionship" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Naturalized" Type="DateTime" Precision="3" />
+          <Property Name="Rel_Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CivilStatus_Id" Type="Int32" />
+          <Property Name="Relative" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Birth" Type="DateTime" Precision="3" />
+          <Property Name="Complexion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Citizenship_Id" Type="Int32" />
+          <Property Name="Employer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Eye_Color" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Job_Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Rel_Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PEL" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DegreeCourse" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Loc" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="CAAPDATA_MNLStoreContainer" CdmEntityContainer="CAAPDATA_MNL_DbSet">
-          <EntitySetMapping Name="tblAirmen">
-            <EntityTypeMapping TypeName="CAAPDATA_MNL.tblAirman">
-              <MappingFragment StoreEntitySet="tblAirmen">
-                <ScalarProperty Name="Loc" ColumnName="Loc" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="AirmenType_Id" ColumnName="AirmenType_Id" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Contact_no" ColumnName="Contact_no" />
-                <ScalarProperty Name="Occupation" ColumnName="Occupation" />
-                <ScalarProperty Name="Sex" ColumnName="Sex" />
-                <ScalarProperty Name="Nationality_Id" ColumnName="Nationality_Id" />
-                <ScalarProperty Name="Height" ColumnName="Height" />
-                <ScalarProperty Name="Weight" ColumnName="Weight" />
-                <ScalarProperty Name="Hair_Color" ColumnName="Hair_Color" />
-                <ScalarProperty Name="Build" ColumnName="Build" />
-                <ScalarProperty Name="Realtionship" ColumnName="Realtionship" />
-                <ScalarProperty Name="Date_Naturalized" ColumnName="Date_Naturalized" />
-                <ScalarProperty Name="Rel_Address" ColumnName="Rel_Address" />
-                <ScalarProperty Name="CivilStatus_Id" ColumnName="CivilStatus_Id" />
-                <ScalarProperty Name="Relative" ColumnName="Relative" />
-                <ScalarProperty Name="Date_Birth" ColumnName="Date_Birth" />
-                <ScalarProperty Name="Complexion" ColumnName="Complexion" />
-                <ScalarProperty Name="Citizenship_Id" ColumnName="Citizenship_Id" />
-                <ScalarProperty Name="Employer" ColumnName="Employer" />
-                <ScalarProperty Name="Eye_Color" ColumnName="Eye_Color" />
-                <ScalarProperty Name="Job_Title" ColumnName="Job_Title" />
-                <ScalarProperty Name="Rel_Contact" ColumnName="Rel_Contact" />
-                <ScalarProperty Name="PEL" ColumnName="PEL" />
-                <ScalarProperty Name="DegreeCourse" ColumnName="DegreeCourse" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tblAMTypes">
             <EntityTypeMapping TypeName="CAAPDATA_MNL.tblAMType">
               <MappingFragment StoreEntitySet="tblAMType">
@@ -829,7 +790,6 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="trInitial" FunctionName="CAAPDATA_MNL.Store.trInitial" />
           <FunctionImportMapping FunctionImportName="viewTRApplication" FunctionName="CAAPDATA_MNL.Store.viewTRApplication">
           <ResultMapping>
               <ComplexTypeMapping TypeName="CAAPDATA_MNL.viewTRApplication">
@@ -853,6 +813,39 @@ warning 6002: The table/view 'CAAPDATA.dbo.tblUsers' does not have a primary key
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="trTagAsPending" FunctionName="CAAPDATA_MNL.Store.trTagAsPending" />
           <FunctionImportMapping FunctionImportName="trTagAsRecieved" FunctionName="CAAPDATA_MNL.Store.trTagAsRecieved" />
+          <EntitySetMapping Name="tblAirmen">
+            <EntityTypeMapping TypeName="CAAPDATA_MNL.tblAirman">
+              <MappingFragment StoreEntitySet="tblAirmen">
+                <ScalarProperty Name="Loc" ColumnName="Loc" />
+                <ScalarProperty Name="DegreeCourse" ColumnName="DegreeCourse" />
+                <ScalarProperty Name="PEL" ColumnName="PEL" />
+                <ScalarProperty Name="Rel_Contact" ColumnName="Rel_Contact" />
+                <ScalarProperty Name="Job_Title" ColumnName="Job_Title" />
+                <ScalarProperty Name="Eye_Color" ColumnName="Eye_Color" />
+                <ScalarProperty Name="Employer" ColumnName="Employer" />
+                <ScalarProperty Name="Citizenship_Id" ColumnName="Citizenship_Id" />
+                <ScalarProperty Name="Complexion" ColumnName="Complexion" />
+                <ScalarProperty Name="Date_Birth" ColumnName="Date_Birth" />
+                <ScalarProperty Name="Relative" ColumnName="Relative" />
+                <ScalarProperty Name="CivilStatus_Id" ColumnName="CivilStatus_Id" />
+                <ScalarProperty Name="Rel_Address" ColumnName="Rel_Address" />
+                <ScalarProperty Name="Date_Naturalized" ColumnName="Date_Naturalized" />
+                <ScalarProperty Name="Realtionship" ColumnName="Realtionship" />
+                <ScalarProperty Name="Build" ColumnName="Build" />
+                <ScalarProperty Name="Hair_Color" ColumnName="Hair_Color" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Nationality_Id" ColumnName="Nationality_Id" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Occupation" ColumnName="Occupation" />
+                <ScalarProperty Name="Contact_no" ColumnName="Contact_no" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="AirmenType_Id" ColumnName="AirmenType_Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

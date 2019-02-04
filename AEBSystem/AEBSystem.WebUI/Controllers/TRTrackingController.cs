@@ -21,6 +21,17 @@ namespace AEBSystem.WebUI.Controllers
         CAAPDATA_MA_DbSet db_ma = new CAAPDATA_MA_DbSet();
         CAAPDATA_VA_DbSet db_va = new CAAPDATA_VA_DbSet();
 
+       
+
+
+        public TRTrackingController()
+        {
+            tblUser Users = new tblUser();
+            if (Users == null)
+            {
+                 RedirectToAction("Index", "Login");
+            }
+        }
 
         public ActionResult Index(string search)
         {
@@ -50,13 +61,12 @@ namespace AEBSystem.WebUI.Controllers
 
         public ActionResult ViewApplications(string search)
         {
-
             var am = db_mnl.getAirmen_all(search).ToList();
             var tr = db_mnl.tblTestReportApplications.ToList();
             var lic = db_mnl.tblAMTypes.ToList();
 
-            var viewModel = (from a in am
-                             join t in tr on a.PEL equals t.PEL
+            var viewModel = (from t in tr
+                             join a in am on t.PEL equals a.PEL
                              join l in lic on t.amType equals l.code
                              where a.AirmenType.Equals(t.amType)
                              orderby t.Id descending
@@ -68,6 +78,9 @@ namespace AEBSystem.WebUI.Controllers
                                  License = l.description,
                                  Status = t.Status,
                                  Remarks = t.Remarks,
+                                 ClaimedBy = t.ClaimedBy,
+                                 ControlNo = t.ControlNo,
+                                 BatchNo = t.BatchNo,
                                  LastModifiedBy = t.LastModifiedBy
                              }
                              ).ToList();
@@ -154,6 +167,7 @@ namespace AEBSystem.WebUI.Controllers
         [HttpPost]
         public ActionResult Initial(TestReportStatusViewModel testReports)
         {
+            var username = Session["Username"].ToString();
             var tr = new tblTestReportApplication
             {
                 //Description = testReport.Fullname,
@@ -161,10 +175,10 @@ namespace AEBSystem.WebUI.Controllers
                 PEL = testReports.PEL,
                 amType = testReports.amType,
                 Status = "Initial",
-                Initial = testReports.Initial,
+                Initial = username,
                 iDate = DateTime.Now,
                 Remarks = testReports.Remarks,
-                LastModifiedBy = testReports.LastModifiedBy,
+                LastModifiedBy = username,
 
                 //set date for NOT NULL datetime fields
                 cDate = DateTime.Now,
@@ -212,21 +226,22 @@ namespace AEBSystem.WebUI.Controllers
         [HttpPost]
         public ActionResult Control(TestReportStatusViewModel testReports, int Id)
         {
+            var username = Session["Username"].ToString();
             var tr = new tblTestReportApplication
             {
                 //Description = testReport.Fullname,
                 Status = "Controlled",
                 BatchNo = testReports.BatchNo,
                 ControlNo = testReports.ControlNo,
-                ControlledBy = testReports.ControlledBy,
+                ControlledBy = username,
                 cDate = DateTime.Now,
                 Remarks = testReports.Remarks,
-                LastModifiedBy = testReports.LastModifiedBy,
+                LastModifiedBy = username,
 
             };
 
 
-            tblTestReportApplication trToEdit = db_mnl.tblTestReportApplications.Find(Id);           
+            tblTestReportApplication trToEdit = db_mnl.tblTestReportApplications.Find(Id);
 
             trToEdit.Status = tr.Status;
             trToEdit.ControlNo = tr.ControlNo;
@@ -236,17 +251,12 @@ namespace AEBSystem.WebUI.Controllers
             trToEdit.Remarks = tr.Remarks;
             trToEdit.LastModifiedBy = tr.LastModifiedBy;
 
-            if (trToEdit.BatchNo == null && trToEdit.ControlNo ==null)
+            if (trToEdit.BatchNo == null && trToEdit.ControlNo == null)
             {
                 return View();
             }
             db_mnl.SaveChanges();
             return RedirectToAction("ViewApplications");
-
-
-
-
-
         }
 
 
@@ -278,13 +288,15 @@ namespace AEBSystem.WebUI.Controllers
                           Recieved = t.Received,
                           ReleasedBy = t.ReleasedBy,
                           rDate = t.rDate,
+                          ClaimedBy = t.ClaimedBy,
                           LastModifiedBy = t.LastModifiedBy
+                          
                       }).FirstOrDefault();
             return View(tr);
         }
 
         public ActionResult Pending(int Id, string PEL)
-        {
+        {           
             var am = db_mnl.getAirmen_all(PEL).ToList();
             var trList = db_mnl.tblTestReportApplications.ToList();
             var lic = db_mnl.tblAMTypes.ToList();
@@ -307,6 +319,7 @@ namespace AEBSystem.WebUI.Controllers
         [HttpPost]
         public ActionResult Pending(TestReportStatusViewModel testReports, int Id)
         {
+            var username = Session["Username"].ToString();
             var tr = new tblTestReportApplication
             {
                 //Description = testReport.Fullname,
@@ -315,7 +328,6 @@ namespace AEBSystem.WebUI.Controllers
                 Status = "Pending",
                 pDate = DateTime.Now,
                 LastModifiedBy = testReports.LastModifiedBy,
-
                
 
             };
@@ -323,7 +335,7 @@ namespace AEBSystem.WebUI.Controllers
             tblTestReportApplication trToEdit = db_mnl.tblTestReportApplications.Find(Id);
 
             trToEdit.Status = tr.Status;           
-            trToEdit.LastModifiedBy = tr.LastModifiedBy;
+            trToEdit.LastModifiedBy = username;
 
             db_mnl.SaveChanges();
 
@@ -338,21 +350,80 @@ namespace AEBSystem.WebUI.Controllers
         [HttpPost]
         public ActionResult BatchProcess(string BatchNo, string Status)
         {
-            var user = "maabulag"; //change this to user log in info
-            
+            var username = Session["Username"].ToString();
+
             if (Status == "Pending")
             { 
                 //tag batch as Pending for Signature
-                db_mnl.trTagAsPending(Status, BatchNo, user, DateTime.Now);
+                db_mnl.trTagAsPending(Status, BatchNo, username, DateTime.Now);
             }
             else
             {
                 //tag batch as Recieved
-                db_mnl.trTagAsRecieved(Status, BatchNo, user, DateTime.Now);
+                db_mnl.trTagAsRecieved(Status, BatchNo, username, DateTime.Now);
             }
 
             
             return RedirectToAction("ViewApplications");
+        }
+
+        public ActionResult Release(int Id, string PEL)
+        {
+            var am = db_mnl.getAirmen_all(PEL).ToList();
+            var trList = db_mnl.tblTestReportApplications.ToList();
+            var lic = db_mnl.tblAMTypes.ToList();
+            var tr = (from t in trList
+                      join l in lic on t.amType equals l.code
+                      join a in am on t.PEL equals a.PEL
+                      where t.Id.Equals(Id)
+                      select new TestReportStatusViewModel
+                      {
+                          Id = t.Id,
+                          PEL = t.PEL,
+                          Fullname = a.Fullname,
+                          amType = t.amType,
+                          License = l.description,
+                          ControlNo = t.ControlNo,
+                          Remarks = t.Remarks
+
+                      }).FirstOrDefault();
+            return View(tr);
+        }
+
+        [HttpPost]
+        public ActionResult Release(TestReportStatusViewModel testReports, int Id)
+        {
+            var username = Session["Username"].ToString();
+            var tr = new tblTestReportApplication
+            {
+                //Description = testReport.Fullname,
+                Status = "Released",
+                ReleasedBy = testReports.ReleasedBy,
+                ClaimedBy = testReports.ClaimedBy,
+                Remarks = testReports.Remarks,
+                LastModifiedBy = testReports.LastModifiedBy,
+
+            };
+
+            tblTestReportApplication trToEdit = db_mnl.tblTestReportApplications.Find(Id);
+
+            trToEdit.Status = tr.Status;
+            trToEdit.ReleasedBy = username;
+            trToEdit.rDate = DateTime.Now;
+            trToEdit.ClaimedBy = tr.ClaimedBy;
+            trToEdit.Remarks = tr.Remarks;
+            trToEdit.LastModifiedBy = username;
+
+            if (trToEdit.ClaimedBy == null)
+            {
+                return View();
+            }
+
+
+
+            db_mnl.SaveChanges();
+            return RedirectToAction("ViewApplications");
+
         }
     }
 }

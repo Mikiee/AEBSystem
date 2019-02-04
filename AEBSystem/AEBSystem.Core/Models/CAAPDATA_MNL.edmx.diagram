@@ -5,7 +5,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="6217af7730be4a36a237f68b6b9dd77b" Name="Diagram1">
-        <EntityTypeShape EntityType="CAAPDATA_MNL.tblAirman" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CAAPDATA_MNL.tblAMType" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CAAPDATA_MNL.tblAnswerSheet1" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CAAPDATA_MNL.tblAnswerSheet2" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
@@ -17,6 +16,7 @@
         <EntityTypeShape EntityType="CAAPDATA_MNL.tblSchool" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CAAPDATA_MNL.tblUser" Width="1.5" PointX="12.75" PointY="3.125" IsExpanded="true" />
         <EntityTypeShape EntityType="CAAPDATA_MNL.tblTestReportApplication" Width="1.5" PointX="5.375" PointY="7.75" />
+        <EntityTypeShape EntityType="CAAPDATA_MNL.tblAirman" Width="1.5" PointX="1.25" PointY="5.875" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

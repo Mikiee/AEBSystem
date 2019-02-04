@@ -27,7 +27,6 @@ namespace AEBSystem.Core.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<tblAirman> tblAirmen { get; set; }
         public virtual DbSet<tblAMType> tblAMTypes { get; set; }
         public virtual DbSet<tblAnswerSheet1> tblAnswerSheet1 { get; set; }
         public virtual DbSet<tblAnswerSheet2> tblAnswerSheet2 { get; set; }
@@ -39,6 +38,7 @@ namespace AEBSystem.Core.Models
         public virtual DbSet<tblSchool> tblSchools { get; set; }
         public virtual DbSet<tblUser> tblUsers { get; set; }
         public virtual DbSet<tblTestReportApplication> tblTestReportApplications { get; set; }
+        public virtual DbSet<tblAirman> tblAirmen { get; set; }
     
         public virtual ObjectResult<getAirmenAll> getAirmen_all(string search)
         {

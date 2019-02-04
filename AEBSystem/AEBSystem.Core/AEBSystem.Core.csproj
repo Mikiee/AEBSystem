@@ -59,6 +59,7 @@
       <DependentUpon>ExamHistory.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Interface\ISaveUserDetails.cs" />
     <Compile Include="Models\BatchProcessModel.cs" />
     <Compile Include="Models\BatchProcessDropDown.cs" />
     <Compile Include="Models\CAAPDATA_MA.Context.cs">

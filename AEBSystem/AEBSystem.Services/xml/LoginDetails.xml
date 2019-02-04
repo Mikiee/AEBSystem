@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Login>
+  <UserDetails>
+    <recid>1</recid>
+    <Name>Michael Abulag</Name>
+    <Role>Administrator</Role>
+    <Position>IT Specialist</Position>
+  </UserDetails>
+</Login>

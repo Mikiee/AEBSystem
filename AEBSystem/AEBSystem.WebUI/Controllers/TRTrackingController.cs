@@ -19,26 +19,21 @@ namespace AEBSystem.WebUI.Controllers
         CAAPDATA_MNL_DbSet db_mnl = new CAAPDATA_MNL_DbSet();
         CAAPDATA_NLA_DbSet db_nla = new CAAPDATA_NLA_DbSet();
         CAAPDATA_MA_DbSet db_ma = new CAAPDATA_MA_DbSet();
-        CAAPDATA_VA_DbSet db_va = new CAAPDATA_VA_DbSet();
+        CAAPDATA_VA_DbSet db_va = new CAAPDATA_VA_DbSet();   
+
 
        
 
-
-        public TRTrackingController()
-        {
-            tblUser Users = new tblUser();
-            if (Users == null)
-            {
-                 RedirectToAction("Index", "Login");
-            }
-        }
-
         public ActionResult Index(string search)
         {
+            var username = Session["Username"].ToString();
+            if (username == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
             var AirmenFromSP = db_mnl.getAirmen_all(search).ToList();
             return View(AirmenFromSP);
-
-
         }
 
         public ActionResult ExamHistory(string PEL, int amType)
@@ -89,6 +84,13 @@ namespace AEBSystem.WebUI.Controllers
 
         public ActionResult Initial(int Id, string Loc)
         {
+            var username = Session["Username"].ToString();
+
+            if (username == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
             if (Loc == "MNL")
             {
                 var am = db_mnl.tblAirmen.ToList();
@@ -168,6 +170,10 @@ namespace AEBSystem.WebUI.Controllers
         public ActionResult Initial(TestReportStatusViewModel testReports)
         {
             var username = Session["Username"].ToString();
+            if (username == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             var tr = new tblTestReportApplication
             {
                 //Description = testReport.Fullname,
@@ -203,6 +209,11 @@ namespace AEBSystem.WebUI.Controllers
 
         public ActionResult Control(int Id, string PEL)
         {
+            var username = Session["Username"].ToString();
+            if (username == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             var am = db_mnl.getAirmen_all(PEL).ToList();
             var trList = db_mnl.tblTestReportApplications.ToList();
             var lic = db_mnl.tblAMTypes.ToList();
@@ -251,10 +262,26 @@ namespace AEBSystem.WebUI.Controllers
             trToEdit.Remarks = tr.Remarks;
             trToEdit.LastModifiedBy = tr.LastModifiedBy;
 
-            if (trToEdit.BatchNo == null && trToEdit.ControlNo == null)
+            if (trToEdit.BatchNo == null || trToEdit.ControlNo == null)
+            {
+                ModelState.AddModelError("notNull", "Batch No and Control No cannot be empty.");
+                ViewBag.ErrorMsg = "Batch No and Control No cannot be empty.";
+            }
+            else
+            {
+                var checkTRIfExist = db_mnl.tblTestReportApplications.Count(a => a.ControlNo == testReports.ControlNo);
+                if (checkTRIfExist != 0)
+                {
+                    ModelState.AddModelError("notNull", "Record already exist");
+                    ViewBag.ErrorMsg = "Record exist";
+                }
+            }
+            if (!ModelState.IsValid)
             {
                 return View();
             }
+
+            ViewBag.ErrorMsg = string.Empty;
             db_mnl.SaveChanges();
             return RedirectToAction("ViewApplications");
         }
@@ -262,6 +289,11 @@ namespace AEBSystem.WebUI.Controllers
 
         public ActionResult TestReportStatusFullView(int Id, string PEL)
         {
+            var username = Session["Username"].ToString();
+            if (username == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             var am = db_mnl.getAirmen_all(PEL).ToList();
             var trList = db_mnl.tblTestReportApplications.ToList();
             var lic = db_mnl.tblAMTypes.ToList();
@@ -296,7 +328,12 @@ namespace AEBSystem.WebUI.Controllers
         }
 
         public ActionResult Pending(int Id, string PEL)
-        {           
+        {
+            var username = Session["Username"].ToString();
+            if (username == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             var am = db_mnl.getAirmen_all(PEL).ToList();
             var trList = db_mnl.tblTestReportApplications.ToList();
             var lic = db_mnl.tblAMTypes.ToList();
@@ -319,6 +356,7 @@ namespace AEBSystem.WebUI.Controllers
         [HttpPost]
         public ActionResult Pending(TestReportStatusViewModel testReports, int Id)
         {
+
             var username = Session["Username"].ToString();
             var tr = new tblTestReportApplication
             {
@@ -351,6 +389,11 @@ namespace AEBSystem.WebUI.Controllers
         public ActionResult BatchProcess(string BatchNo, string Status)
         {
             var username = Session["Username"].ToString();
+            if (username == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+           
 
             if (Status == "Pending")
             { 

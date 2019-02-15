@@ -16,7 +16,7 @@ namespace AEBSystem.WebUI.Controllers
         CAAPDATA_MNL_DbSet db_mnl = new CAAPDATA_MNL_DbSet();  
         public ActionResult Index()
         {
-           
+            Session.Clear();
             return View();
         }
 
@@ -42,7 +42,7 @@ namespace AEBSystem.WebUI.Controllers
                 return View();
             }
             SaveUserLoginDetails.SaveUserDetails(userlogin.Fullname, userlogin.Role, userlogin.Position);
-            Session["Username"] = User;
+            HttpContext.Session["Username"] = User;
             return RedirectToAction("Index", "TRTracking");
 
 

@@ -8,45 +8,46 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AEB System | Login</title>
+    <title>AEBSystem | Login</title>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet">
     <link href="~/Fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="~/Content/animate.css" rel="stylesheet">
     <link href="~/Content/style.css" rel="stylesheet">
 </head>
 <body class="gray-bg">
-    <div class="loginColumns animated fadeInDown">
-        <div class="row">
+    <div class="middle-box text-center loginscreen  animated fadeInDown">
+        <div>
+            <div>
+                <h1 class="logo-name">AEB</h1>
+            </div>
             @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
-            <div class="col-md-6 col-lg-offset-3">
-                <div class="ibox-content">
-                    <form class="m-t" role="form" action="index.html">
-                        <div class="form-group">
-                            @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
-                        </div>
-                        <div class="form-group">
-                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
-                        </div>
-                        
-                        <input type="submit" value="Login" class="btn btn-primary block full-width m-b" />
-                        <a href="#">
-                            <small>Forgot password?</small>
-                        </a>
-                        
-                    </form>
-                   
-                </div>
-            </div>
+                <h3>Welcome to AEB System</h3>
+                
+                <p>Please input your credentials.</p>
+                <form class="m-t" role="form" action="index.html">
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", @placeholder = "Username" } })
+                    </div>
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @type = "password", @placeholder = "Password" } })
+                    </div>
+
+                    <input type="submit" value="Login" class="btn btn-success block full-width m-b" />
+                    <a href="#">
+                        <small>Forgot password?</small>
+                    </a>
+
+                </form>
             }
         </div>
-           
+
 
         <hr />
         <div class="row">
             <div class="col-md-6">
-               Airmen Examination Board
+                Airmen Examination Board
             </div>
             <div class="col-md-6 text-right">
                 <small>© 2018-@DateTime.Now.Year</small>

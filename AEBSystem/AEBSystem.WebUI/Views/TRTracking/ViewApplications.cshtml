@@ -1,16 +1,15 @@
 ﻿@model IEnumerable<AEBSystem.Core.ViewModels.TestReportStatusViewModel>
 
-<div class="row wrapper border-bottom white-bg page-heading">
+
 
     @{
         ViewBag.Title = "Test Report Status";
     }
 
-    <h2><strong>Test Report Status</strong></h2>
+   
 
 
 
-</div>
 
 <div class="wrapper wrapper-content animated fadeInRight">
 
@@ -19,22 +18,22 @@
         @using (Html.BeginForm("ViewApplications", "TRTracking", FormMethod.Get))
         {
 
-            <div class="row">
-                <div class="col-sm-6">
-                    <h3>
-                        <u>@Html.ActionLink("Go to Search Airmen", "Index")</u> | 
-                        <u>@Html.ActionLink("Batch Process", "BatchProcess")</u>                        
-                    </h3>
-                </div>
-                <div class="col-sm-6">
-                    <div class="input-group">
-                        @*<input type="text" placeholder="Search" class="input-sm form-control"/>*@
-                        @Html.TextBox("search", null, new { @class = "input-sm form-control" })<span class="input-group-btn">
-                            <input type="submit" name="submit" value="Search" class="btn btn-sm btn-primary" />
-                        </span>
-                    </div>
+        <div class="row">
+            <div class="col-sm-6">
+
+                <h3>View Test Report Applications</h3>
+
+            </div>
+
+            <div class="col-sm-6">
+                <div class="input-group">
+                    @*<input type="text" placeholder="Search" class="input-sm form-control"/>*@
+                    @Html.TextBox("search", null, new { @class = "input-sm form-control" })<span class="input-group-btn">
+                        <input type="submit" name="submit" value="Search" class="btn btn-sm btn-primary" />
+                    </span>
                 </div>
             </div>
+        </div>
         }
         <hr />
 

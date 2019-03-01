@@ -9,8 +9,14 @@
         <div class="navbar-collapse collapse" id="navbar">
             <ul class="nav navbar-nav">
                 <li class="active">
-                    <a aria-expanded="false" role="button" href="@Url.Action("Index", "TRTracking")"> Main</a>
-                </li>              
+                    <a href="@Url.Action("Index", "TRTracking")"><i class="fa fa-address-card"></i> <span class="nav-label" data-i18n="nav.layouts">Main</span></a>        
+                </li>  
+                <li>
+                    <a href="@Url.Action("ViewApplications", "TRTracking")"><i class="fa fa-file-text-o"></i> <span class="nav-label" data-i18n="nav.layouts">Test Reports</span></a>
+                </li>  
+                <li>
+                    <a href="@Url.Action("BatchProcess", "TRTracking")"><i class="fa fa-tags"></i> <span class="nav-label" data-i18n="nav.layouts">Batch Processing</span></a>
+                </li> 
 
             </ul>
             <ul class="nav navbar-top-links navbar-right">

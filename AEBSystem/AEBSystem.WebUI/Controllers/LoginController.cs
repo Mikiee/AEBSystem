@@ -43,7 +43,9 @@ namespace AEBSystem.WebUI.Controllers
             }
             SaveUserLoginDetails.SaveUserDetails(userlogin.Fullname, userlogin.Role, userlogin.Position);
             HttpContext.Session["Username"] = User;
-            return RedirectToAction("Index", "TRTracking");
+            HttpContext.Session["Fullname"] = userlogin.Fullname;
+            HttpContext.Session["Role"] = userlogin.Role;
+            return RedirectToAction("Index", "Dashboard");
 
 
         }
